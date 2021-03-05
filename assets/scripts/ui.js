@@ -4,6 +4,8 @@ function hideAllFrames () {
   $('#welcome-frame').hide()
   $('#sign-up-frame').hide()
   $('#sign-in-frame').hide()
+  $('#nav-bar-frame').hide()
+  $('#workout-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -21,8 +23,15 @@ function showSignInFrame () {
   $('#sign-in-frame').show()
 }
 
+function showWorkoutFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#workout-frame').show()
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
-  showSignInFrame
+  showSignInFrame,
+  showWorkoutFrame
 }
