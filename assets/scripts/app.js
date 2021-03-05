@@ -10,4 +10,5 @@ $(() => {
   $('#sign-up-button').on('click', ui.showSignUpFrame)
   $('.go-to-welcome-frame').on('click', ui.showWelcomeFrame)
   $('#sign-up-form').on('submit', events.onSignUp)
+  $('#sign-in-form').on('submit', events.onSignIn)
 })

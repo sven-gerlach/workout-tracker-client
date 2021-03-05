@@ -11,11 +11,14 @@ function onSignUp (event) {
 }
 
 function onSignIn (event) {
-  // event.preventDefault()
-  // const formData = getFormFields(event.currentTarget)
-  //
+  event.preventDefault()
+  const formData = getFormFields(event.currentTarget)
+  api.signIn(formData)
+    .then(console.log)
+    .catch(console.error)
 }
 
 module.exports = {
-  onSignUp
+  onSignUp,
+  onSignIn
 }
