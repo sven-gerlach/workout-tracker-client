@@ -1,11 +1,12 @@
 'use strict'
+const ui = require('./ui')
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
+// hiding all frames
+ui.showWelcomeFrame()
 
 $(() => {
-  // your JS code goes here
+  $('#sign-in-button').on('click', ui.showSignInFrame)
+  $('#sign-up-button').on('click', ui.showSignUpFrame)
+  $('.go-to-welcome-frame').on('click', ui.showWelcomeFrame)
+  $('#sign-up-form').on('submit', )
 })
