@@ -1,3 +1,5 @@
+'use strict'
+
 function hideAllFrames () {
   $('#welcome-frame').hide()
   $('#sign-up-frame').hide()
@@ -20,7 +22,6 @@ function showSignInFrame () {
 }
 
 module.exports = {
-  hideAllFrames,
   showWelcomeFrame,
   showSignUpFrame,
   showSignInFrame
