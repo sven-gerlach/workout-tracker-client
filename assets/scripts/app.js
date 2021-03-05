@@ -12,4 +12,6 @@ $(() => {
   $('#sign-up-form').on('submit', events.onSignUp)
   $('#sign-in-form').on('submit', events.onSignIn)
   $('#sign-out-button').on('click', events.onSignOut)
+  $('#security-button').on('click', ui.showSecurityFrame)
+  $('#change-pw-form').on('submit', events.onChangePassword)
 })

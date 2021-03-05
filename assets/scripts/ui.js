@@ -6,6 +6,7 @@ function hideAllFrames () {
   $('#sign-in-frame').hide()
   $('#nav-bar-frame').hide()
   $('#workout-frame').hide()
+  $('#security-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -29,9 +30,21 @@ function showWorkoutFrame () {
   $('#workout-frame').show()
 }
 
+function showSecurityFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#security-frame').show()
+}
+
+function clearForm (id) {
+  $('#' + id).trigger('reset')
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
   showSignInFrame,
-  showWorkoutFrame
+  showWorkoutFrame,
+  showSecurityFrame,
+  clearForm
 }
