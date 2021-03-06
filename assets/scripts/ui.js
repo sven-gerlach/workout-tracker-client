@@ -7,6 +7,8 @@ function hideAllFrames () {
   $('#nav-bar-frame').hide()
   $('#workout-frame').hide()
   $('#security-frame').hide()
+  $('#about-me-frame').hide()
+  $('#exercise-selection-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -36,6 +38,17 @@ function showSecurityFrame () {
   $('#security-frame').show()
 }
 
+function showAboutMeFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#about-me-frame').show()
+}
+
+function showExerciseSelectionFrame () {
+  hideAllFrames()
+  $('#exercise-selection-frame').show()
+}
+
 function clearForm (id) {
   $('#' + id).trigger('reset')
 }
@@ -46,5 +59,7 @@ module.exports = {
   showSignInFrame,
   showWorkoutFrame,
   showSecurityFrame,
+  showAboutMeFrame,
+  showExerciseSelectionFrame,
   clearForm
 }

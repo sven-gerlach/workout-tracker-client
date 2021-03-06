@@ -62,9 +62,21 @@ function onChangePassword (event) {
     })
 }
 
+function onSetUpWorkout () {
+  const weightUnit = $('#weight-unit')[0].value
+  api.setUpWorkout(weightUnit)
+    .then(response => {
+      store.workout = response.workout
+      console.log(store)
+      ui.showExerciseSelectionFrame()
+    })
+    .catch(console.error)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onSetUpWorkout
 }

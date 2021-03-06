@@ -39,9 +39,25 @@ function changePassword (data) {
   })
 }
 
+function setUpWorkout (weightUnit) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/workouts',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      workout: {
+        weightUnit: weightUnit
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  setUpWorkout
 }
