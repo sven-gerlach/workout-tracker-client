@@ -65,11 +65,35 @@ function selectExercise (workoutId, data) {
   })
 }
 
+function createSet (workoutId, exerciseId, data) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/workouts/' + workoutId + '/exercise/' + exerciseId,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
+function updatePersonalSettings (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/users',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
   setUpWorkout,
-  selectExercise
+  selectExercise,
+  createSet,
+  updatePersonalSettings
 }

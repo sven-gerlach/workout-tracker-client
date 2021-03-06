@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('./store')
+
 function hideAllFrames () {
   $('#welcome-frame').hide()
   $('#sign-up-frame').hide()
@@ -7,9 +9,10 @@ function hideAllFrames () {
   $('#nav-bar-frame').hide()
   $('#workout-frame').hide()
   $('#security-frame').hide()
-  $('#about-me-frame').hide()
+  $('#global-settings-frame').hide()
   $('#exercise-selection-frame').hide()
   $('#set-frame').hide()
+  $('#personal-settings-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -39,10 +42,10 @@ function showSecurityFrame () {
   $('#security-frame').show()
 }
 
-function showAboutMeFrame () {
+function showGlobalSettingsFrame () {
   hideAllFrames()
   $('#nav-bar-frame').show()
-  $('#about-me-frame').show()
+  $('#global-settings-frame').show()
 }
 
 function showExerciseSelectionFrame () {
@@ -55,8 +58,21 @@ function showSetFrame () {
   $('#set-frame').show()
 }
 
+function showPersonalSettingsFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#personal-settings-frame').show()
+}
+
 function clearForm (id) {
   $('#' + id).trigger('reset')
+}
+
+function updatePersonalSettingsFormPlaceholders () {
+  $('#name').attr('placeholder', store.user.name || '')
+  $('#surname').attr('placeholder', store.user.surname || '')
+  $('#age').attr('placeholder', store.user.age || '')
+  $('#experience').val(store.user.experience || '')
 }
 
 module.exports = {
@@ -65,8 +81,10 @@ module.exports = {
   showSignInFrame,
   showWorkoutFrame,
   showSecurityFrame,
-  showAboutMeFrame,
+  showGlobalSettingsFrame,
   showExerciseSelectionFrame,
   showSetFrame,
-  clearForm
+  showPersonalSettingsFrame,
+  clearForm,
+  updatePersonalSettingsFormPlaceholders
 }

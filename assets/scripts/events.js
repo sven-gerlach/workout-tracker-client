@@ -28,6 +28,7 @@ function onSignIn (event) {
     .then(data => {
       ui.showWorkoutFrame()
       store.user = data.user
+      ui.updatePersonalSettingsFormPlaceholders()
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
@@ -67,7 +68,6 @@ function onSetUpWorkout () {
   api.setUpWorkout(weightUnit)
     .then(response => {
       store.workout = response.workout
-      console.log(store)
       ui.showExerciseSelectionFrame()
     })
     .catch(console.error)
@@ -79,9 +79,61 @@ function onExerciseSelection (event) {
   const data = getFormFields(event.target)
   api.selectExercise(workoutId, data)
     .then(response => {
-      console.log(response)
+      ui.showSetFrame()
       store.workout.exercise.push(response.exercise)
-      console.log(store)
+      ui.clearForm(event.originalEvent.originalTarget.id)
+    })
+    .catch(console.error)
+}
+
+function onSetEntry (event) {
+  event.preventDefault()
+  const workoutId = store.workout._id
+  const exerciseId = store.workout.exercise[store.workout.exercise.length - 1]._id
+  const data = getFormFields(event.target)
+  api.createSet(workoutId, exerciseId, data)
+    .then(response => {
+      ui.clearForm(event.delegateTarget.id)
+      const currentExercise = store.workout.exercise[store.workout.exercise.length - 1]
+      currentExercise.sets.push(response.set)
+      const buttonText = event.originalEvent.submitter.value
+      if (buttonText === 'Next Set') {
+        const nextSetNumber = currentExercise.sets.length + 1
+        $('#set-frame > p').text(`Set ${nextSetNumber}`)
+      }
+      if (buttonText === 'New Exercise') {
+        ui.showExerciseSelectionFrame()
+        $('#set-frame > p').text('Set 1')
+      }
+      if (buttonText === 'I\'m Spent!') {
+        ui.showWorkoutFrame()
+        $('#set-frame > p').text('Set 1')
+        delete store.workout
+      }
+    })
+    .catch(console.error)
+}
+
+function setupPersonalSettingsFrame () {
+  ui.showPersonalSettingsFrame()
+  console.log(store.user)
+}
+
+function onUpdatePersonalSettings (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+
+  // get level of experience from drop-down list and add to user key in data obj
+  const experience = $('#experience')[0].value
+  data.user.experience = experience
+
+  // make ajax call to update db
+  api.updatePersonalSettings(data)
+    .then(response => {
+      ui.clearForm(event.delegateTarget.id)
+      console.log(response)
+      store.user = response.user
+      ui.updatePersonalSettingsFormPlaceholders()
     })
     .catch(console.error)
 }
@@ -92,5 +144,8 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onSetUpWorkout,
-  onExerciseSelection
+  onExerciseSelection,
+  onSetEntry,
+  setupPersonalSettingsFrame,
+  onUpdatePersonalSettings
 }
