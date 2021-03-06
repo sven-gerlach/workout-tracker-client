@@ -18,6 +18,16 @@ function signIn (data) {
   })
 }
 
+function getAllWorkouts () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/workouts',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 function signOut () {
   return $.ajax({
     method: 'DELETE',
@@ -90,6 +100,7 @@ function updatePersonalSettings (data) {
 module.exports = {
   signUp,
   signIn,
+  getAllWorkouts,
   signOut,
   changePassword,
   setUpWorkout,

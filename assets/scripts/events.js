@@ -3,6 +3,7 @@ const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const store = require('./store')
 const ui = require('./ui')
+const dbSearch = require('./db_search')
 
 // todo: add auto-sign in feature
 function onSignUp (event) {
@@ -27,8 +28,19 @@ function onSignIn (event) {
   api.signIn(formData)
     .then(data => {
       ui.showWorkoutFrame()
+
+      // store user data and all historic workout data locally
       store.user = data.user
+      api.getAllWorkouts()
+        .then(response => {
+          console.log(response)
+          store.workouts = response.workouts
+        })
+        .catch(console.error)
+
+      // update the personal settings form placeholders with the downloaded user data
       ui.updatePersonalSettingsFormPlaceholders()
+
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
@@ -69,8 +81,19 @@ function onSetUpWorkout () {
     .then(response => {
       store.workout = response.workout
       ui.showExerciseSelectionFrame()
+
+      // get all previously used exercise titles and store them
+      store.exerciseNames = dbSearch.getUsedExerciseNames()
+      console.log(store)
     })
     .catch(console.error)
+}
+
+function onAddExerciseToWorkouts () {
+  let exerciseName = $('#search-for-exercise-names').val()
+  exerciseName = exerciseName[0].toUpperCase() + exerciseName.substring(1)
+  store.exerciseNames.push(exerciseName)
+  ui.updateExerciseList.call($('#search-for-exercise-names'))
 }
 
 function onExerciseSelection (event) {
@@ -116,7 +139,6 @@ function onSetEntry (event) {
 
 function setupPersonalSettingsFrame () {
   ui.showPersonalSettingsFrame()
-  console.log(store.user)
 }
 
 function onUpdatePersonalSettings (event) {
@@ -147,5 +169,6 @@ module.exports = {
   onExerciseSelection,
   onSetEntry,
   setupPersonalSettingsFrame,
-  onUpdatePersonalSettings
+  onUpdatePersonalSettings,
+  onAddExerciseToWorkouts
 }

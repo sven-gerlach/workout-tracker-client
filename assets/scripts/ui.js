@@ -75,6 +75,20 @@ function updatePersonalSettingsFormPlaceholders () {
   $('#experience').val(store.user.experience || '')
 }
 
+// 4) for every key stroke, check if that string is in the exercise list and add all matching exercises to a scroll list
+// 5) If user clicks on an item in scroll list it populates the next exercise box
+function updateExerciseList () {
+  const filterText = $(this).val()
+  const filteredExercises = new Set(store.exerciseNames.filter(exercise => {
+    return exercise.match(new RegExp(filterText, 'i'))
+  }))
+  let optionsString = ''
+  filteredExercises.forEach(exercise => {
+    optionsString += `<option value="${exercise}">${exercise}</option>`
+  })
+  $('#used-exercise-titles').html(optionsString)
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
@@ -86,5 +100,6 @@ module.exports = {
   showSetFrame,
   showPersonalSettingsFrame,
   clearForm,
-  updatePersonalSettingsFormPlaceholders
+  updatePersonalSettingsFormPlaceholders,
+  updateExerciseList
 }

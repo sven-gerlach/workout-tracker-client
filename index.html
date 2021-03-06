@@ -61,25 +61,6 @@
             <option value="kg">kg</option>
           </select>
         </section>
-        <section id="exercise-selection-frame">
-          <form id="exercise-selection">
-            <input type="text" name="exercise[title]" placeholder="exercise" required>
-            <input type="text" name="exercise[description]" placeholder="description (not required)">
-            <input type="submit" value="Start First Set">
-          </form>
-        </section>
-        <section id="set-frame">
-          <p>Set 1</p>
-          <form id="set-form">
-            <label for="weight-input">Weight:</label>
-            <input type="number" id="weight-input" min="0" name="set[weight]" required>
-            <label for="rep-input">Reps:</label>
-            <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
-            <input type="submit" value="Next Set">
-            <input type="submit" value="New Exercise">
-            <input type="submit" value="I'm Spent!">
-          </form>
-        </section>
         <section id="personal-settings-frame">
           <form id="personal-settings-form">
             <div>
@@ -105,6 +86,37 @@
               </select>
             </div>
             <input type="submit" value="Submit">
+          </form>
+        </section>
+        <section id="exercise-selection-frame">
+          <form id="exercise-selection">
+            <input type="text" name="exercise[title]" placeholder="exercise" required>
+            <input type="text" name="exercise[description]" placeholder="description (not required)">
+            <input type="submit" value="Start First Set">
+            <form>
+              <div>
+                <input id="search-for-exercise-names" type="text" placeholder="search">
+                <button id="add-exercise-to-list" type="button">Add</button>
+              </div>
+              <div>
+                <label for="used-exercise-titles">Exercise:</label>
+                <select id="used-exercise-titles">
+                  <!-- placeholder for dynamically inserted <option> tags -->
+                </select>
+              </div>
+            </form>
+          </form>
+        </section>
+        <section id="set-frame">
+          <p>Set 1</p>
+          <form id="set-form">
+            <label for="weight-input">Weight:</label>
+            <input type="number" id="weight-input" min="0" name="set[weight]" required>
+            <label for="rep-input">Reps:</label>
+            <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
+            <input type="submit" value="Next Set">
+            <input type="submit" value="New Exercise">
+            <input type="submit" value="I'm Spent!">
           </form>
         </section>
       </body>
