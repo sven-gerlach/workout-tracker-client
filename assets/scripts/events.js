@@ -84,7 +84,6 @@ function onSetUpWorkout () {
 
       // get all previously used exercise titles and store them
       store.exerciseNames = dbSearch.getUsedExerciseNames()
-      console.log(store)
     })
     .catch(console.error)
 }
@@ -144,10 +143,7 @@ function setupPersonalSettingsFrame () {
 function onUpdatePersonalSettings (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-
-  // get level of experience from drop-down list and add to user key in data obj
-  const experience = $('#experience')[0].value
-  data.user.experience = experience
+  console.log(data)
 
   // make ajax call to update db
   api.updatePersonalSettings(data)

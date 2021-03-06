@@ -77,12 +77,12 @@
             </div>
             <div>
               <label for="experience">Experience:</label>
-              <select id="experience">
+              <select id="experience" name="user[experience]">
                 <option value=""></option>
-                <option value="Rookie" name="user[experience]">Rookie</option>
-                <option value="Amateur" name="user[experience]">Amateur</option>
-                <option value="Experienced" name="user[experience]">Experienced</option>
-                <option value="Pro" name="user[experience]">Pro</option>
+                <option value="Rookie">Rookie</option>
+                <option value="Amateur">Amateur</option>
+                <option value="Experienced">Experienced</option>
+                <option value="Pro">Pro</option>
               </select>
             </div>
             <input type="submit" value="Submit">
@@ -99,7 +99,7 @@
                 <button id="add-exercise-to-list" type="button">Add</button>
               </div>
               <div>
-                <label for="used-exercise-titles">Exercise:</label>
+                <label for="used-exercise-titles">Select Exercise:</label>
                 <select id="used-exercise-titles">
                   <!-- placeholder for dynamically inserted <option> tags -->
                 </select>
