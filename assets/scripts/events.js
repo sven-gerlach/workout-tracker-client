@@ -84,6 +84,9 @@ function onSetUpWorkout () {
 
       // get all previously used exercise titles and store them
       store.exerciseNames = dbSearch.getUsedExerciseNames()
+
+      // populate exercise selector with all previously used exercises
+      ui.populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
     })
     .catch(console.error)
 }

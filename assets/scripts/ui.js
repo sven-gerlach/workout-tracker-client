@@ -88,9 +88,13 @@ function updateExerciseList () {
   const filterText = $(this).val()
   const filteredExercises = new Set(store.exerciseNames.filter(exercise => {
     return exercise.match(new RegExp(filterText, 'i'))
-  }))
+  }).sort())
+  populateExerciseTitleSelector(filteredExercises)
+}
+
+function populateExerciseTitleSelector (exercises) {
   let optionsString = ''
-  filteredExercises.forEach(exercise => {
+  exercises.forEach(exercise => {
     optionsString += `<option value="${exercise}">${exercise}</option>`
   })
   $('#used-exercise-titles').html(optionsString)
@@ -99,6 +103,7 @@ function updateExerciseList () {
 function postWorkoutCleanUp () {
   showWorkoutFrame()
   $('#set-frame > p').text('Set 1')
+  $('form').trigger('reset')
   delete store.workout
 }
 
@@ -116,5 +121,6 @@ module.exports = {
   clearForm,
   updatePersonalSettingsFormPlaceholders,
   updateExerciseList,
+  populateExerciseTitleSelector,
   postWorkoutCleanUp
 }
