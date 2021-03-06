@@ -17,4 +17,5 @@ $(() => {
   $('#sign-out-button').on('click', events.onSignOut)
   $('#change-pw-form').on('submit', events.onChangePassword)
   $('#setup-workout-button').on('click', events.onSetUpWorkout)
+  $('#exercise-selection-frame').on('submit', events.onExerciseSelection)
 })

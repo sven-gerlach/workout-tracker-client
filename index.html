@@ -64,11 +64,21 @@
           <form id="exercise-selection">
             <input type="text" name="exercise[title]" placeholder="exercise" required>
             <input type="text" name="exercise[description]" placeholder="description (not required)">
-            <input type="submit" value="Start 1st Set">
+            <input type="submit" value="Start First Set">
+          </form>
+        </section>
+        <section id="set-frame">
+          <p>Set 1</p>
+          <form id="set-form">
+            <label for="weight-input">Weight:</label>
+            <input type="number" id="weight-input" min="0" name="set[weight]" required>
+            <label for="rep-input">Reps:</label>
+            <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
+            <input type="submit" value="New Set">
+            <input type="submit" value="New Exercise">
+            <input type="submit" value="Stop Workout">
           </form>
         </section>
       </body>
-      <footer>
-      </footer>
     </body>
 </html>

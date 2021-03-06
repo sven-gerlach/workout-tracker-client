@@ -54,10 +54,22 @@ function setUpWorkout (weightUnit) {
   })
 }
 
+function selectExercise (workoutId, data) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/workouts/' + workoutId,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
-  setUpWorkout
+  setUpWorkout,
+  selectExercise
 }

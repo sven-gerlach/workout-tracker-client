@@ -73,10 +73,24 @@ function onSetUpWorkout () {
     .catch(console.error)
 }
 
+function onExerciseSelection (event) {
+  event.preventDefault()
+  const workoutId = store.workout._id
+  const data = getFormFields(event.target)
+  api.selectExercise(workoutId, data)
+    .then(response => {
+      console.log(response)
+      store.workout.exercise.push(response.exercise)
+      console.log(store)
+    })
+    .catch(console.error)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
-  onSetUpWorkout
+  onSetUpWorkout,
+  onExerciseSelection
 }

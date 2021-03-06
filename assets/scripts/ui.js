@@ -9,6 +9,7 @@ function hideAllFrames () {
   $('#security-frame').hide()
   $('#about-me-frame').hide()
   $('#exercise-selection-frame').hide()
+  $('#set-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -49,6 +50,11 @@ function showExerciseSelectionFrame () {
   $('#exercise-selection-frame').show()
 }
 
+function showSetFrame () {
+  hideAllFrames()
+  $('#set-frame').show()
+}
+
 function clearForm (id) {
   $('#' + id).trigger('reset')
 }
@@ -61,5 +67,6 @@ module.exports = {
   showSecurityFrame,
   showAboutMeFrame,
   showExerciseSelectionFrame,
+  showSetFrame,
   clearForm
 }
