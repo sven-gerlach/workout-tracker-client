@@ -13,6 +13,7 @@ function hideAllFrames () {
   $('#exercise-selection-frame').hide()
   $('#set-frame').hide()
   $('#personal-settings-frame').hide()
+  $('#stats-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -64,6 +65,12 @@ function showPersonalSettingsFrame () {
   $('#personal-settings-frame').show()
 }
 
+function showStatsFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#stats-frame').show()
+}
+
 function clearForm (id) {
   $('#' + id).trigger('reset')
 }
@@ -105,6 +112,7 @@ module.exports = {
   showExerciseSelectionFrame,
   showSetFrame,
   showPersonalSettingsFrame,
+  showStatsFrame,
   clearForm,
   updatePersonalSettingsFormPlaceholders,
   updateExerciseList,

@@ -13,6 +13,8 @@ function getUsedExerciseNames () {
   return usedExerciseNames
 }
 
+
+
 module.exports = {
   getUsedExerciseNames
 }
