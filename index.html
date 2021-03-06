@@ -88,23 +88,22 @@
             <input type="submit" value="Submit">
           </form>
         </section>
+<!--        todo: this needs refactoring after error is handled-->
         <section id="exercise-selection-frame">
           <form id="exercise-selection">
-            <input type="text" name="exercise[title]" placeholder="exercise" required>
-            <input type="text" name="exercise[description]" placeholder="description (not required)">
+            <div>
+              <input id="search-for-exercise-names" type="text" placeholder="search for exercise">
+              <button id="add-exercise-to-list" type="button">Add</button>
+            </div>
+            <div>
+              <label for="used-exercise-titles">Select Exercise:</label>
+              <select id="used-exercise-titles" name="exercise[title]">
+                <!-- placeholder for dynamically inserted <option> tags -->
+              </select>
+            </div>
+            <input type="text" name="exercise[description]" placeholder="description (optional)">
             <input type="submit" value="Start First Set">
-            <form>
-              <div>
-                <input id="search-for-exercise-names" type="text" placeholder="search">
-                <button id="add-exercise-to-list" type="button">Add</button>
-              </div>
-              <div>
-                <label for="used-exercise-titles">Select Exercise:</label>
-                <select id="used-exercise-titles">
-                  <!-- placeholder for dynamically inserted <option> tags -->
-                </select>
-              </div>
-            </form>
+            <button type="button" class="reset-workout-frames">I'm Spent!</button>
           </form>
         </section>
         <section id="set-frame">

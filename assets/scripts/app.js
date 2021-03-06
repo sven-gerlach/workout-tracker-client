@@ -23,4 +23,5 @@ $(() => {
   $('#personal-settings-form').on('submit', events.onUpdatePersonalSettings)
   $('#search-for-exercise-names').keyup(ui.updateExerciseList)
   $('#add-exercise-to-list').on('click', events.onAddExerciseToWorkouts)
+  $('.reset-workout-frames').on('click', ui.postWorkoutCleanUp)
 })

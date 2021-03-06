@@ -89,6 +89,12 @@ function updateExerciseList () {
   $('#used-exercise-titles').html(optionsString)
 }
 
+function postWorkoutCleanUp () {
+  showWorkoutFrame()
+  $('#set-frame > p').text('Set 1')
+  delete store.workout
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
@@ -101,5 +107,6 @@ module.exports = {
   showPersonalSettingsFrame,
   clearForm,
   updatePersonalSettingsFormPlaceholders,
-  updateExerciseList
+  updateExerciseList,
+  postWorkoutCleanUp
 }

@@ -128,9 +128,7 @@ function onSetEntry (event) {
         $('#set-frame > p').text('Set 1')
       }
       if (buttonText === 'I\'m Spent!') {
-        ui.showWorkoutFrame()
-        $('#set-frame > p').text('Set 1')
-        delete store.workout
+        ui.postWorkoutCleanUp()
       }
     })
     .catch(console.error)
