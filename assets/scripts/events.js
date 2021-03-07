@@ -167,17 +167,25 @@ function onStatsButtonClick () {
 
 function onShowGraph (event) {
   event.preventDefault()
+  let exercises
 
   // get all previous workouts and store them locally
   _getAllWorkouts()
     .then(() => {
       // grab selected exercise and pass it to a function to get all sets of this exercise
       const title = getFormFields(event.target).exercise.title
-      const exercises = dbSearch.getAllExercisesOfType(title)
-      return dbSearch.getWorkoutVolume(exercises)
+      exercises = dbSearch.getAllExercisesOfType(title)
+      const volume = dbSearch.getWorkoutVolume(exercises)
+      return volume
     })
-    .then(exerciseVolumes => {
-      graphData.exerciseVolume(exerciseVolumes)
+    .then(volume => {
+      // get the dates
+      const dates = dbSearch.getWorkoutDates(exercises)
+      return { volume, dates }
+    })
+    .then(data => {
+      // graph the volume and the dates
+      graphData.exerciseVolume(data.volume, data.dates)
     })
     .catch(console.error)
 }

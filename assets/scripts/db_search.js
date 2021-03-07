@@ -42,8 +42,17 @@ function getWorkoutVolume (exercises) {
   return workoutVolumes
 }
 
+function getWorkoutDates (exercises) {
+  const workoutDates = []
+  for (const exercise of exercises) {
+    workoutDates.push(exercise.createdAt)
+  }
+  return workoutDates
+}
+
 module.exports = {
   getUsedExerciseNames,
   getAllExercisesOfType,
-  getWorkoutVolume
+  getWorkoutVolume,
+  getWorkoutDates
 }
