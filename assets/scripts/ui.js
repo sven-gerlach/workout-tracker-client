@@ -169,6 +169,15 @@ function postWorkoutCleanUp () {
   delete store.workout
 }
 
+function showUserModal (title, body) {
+  $('#user-message-title').text(title)
+  $('#user-message-body').text(body)
+  $('#user-message-modal').modal({
+    backdrop: 'static',
+    show: true
+  })
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
@@ -186,5 +195,6 @@ module.exports = {
   updateExerciseList,
   populateExerciseTitleSelector,
   postWorkoutCleanUp,
-  populateWorkoutTable
+  populateWorkoutTable,
+  showUserModal
 }

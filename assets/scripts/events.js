@@ -17,7 +17,18 @@ function onSignUp (event) {
       ui.clearForm(event.delegateTarget.id)
     })
     .catch(response => {
+      // Launch modal to alert user to the error
       console.log(response)
+      if (response.responseJSON.name === 'BadParamsError') {
+        const title = 'Incorrect Password'
+        const body = 'It seems the two passwords do not match. Please try again.'
+        ui.showUserModal(title, body)
+      } else {
+        const title = 'E-Mail Already Exists'
+        const body = 'A user with that email seems to exist already. Please use a different e-mail address.'
+        ui.showUserModal(title, body)
+      }
+
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
