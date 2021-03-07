@@ -1,5 +1,53 @@
 @import '~bootstrap/scss/bootstrap';
 
+// Handwriting font style
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body {
+  background-image: url('../../public/background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  color: aliceblue;
+  height: 100vh
+}
+
+.button {
+  background-color: rgba(0,0,0, 0.6);
+  color: aliceblue;
+  border: aliceblue 1px solid;
+  border-radius: 30px;
+}
+
+#welcome-frame {
+  text-align: center;
+  height: 100vh;
+  div:first-of-type {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  div:last-of-type {
+    height: 50vh;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    button {
+      margin: 0 30px;
+      flex: 50px 1 1;
+    }
+  }
+  h3 {
+    font-family: 'Permanent Marker', cursive;
+  }
+}
+
 #exercise-volume-chart {
   width: 350px;
   height: 350px;
