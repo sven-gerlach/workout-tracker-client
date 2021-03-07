@@ -125,7 +125,7 @@ function populateWorkoutTable () {
   `
   let counter = 1
 
-  for (const workout of store.workouts) {
+  _.forEachRight(store.workouts, workout => {
     if (counter <= limit || limit === 'all') {
       const date = _getDate(workout.createdAt)
       const duration = _getDuration(workout.createdAt, workout.updatedAt)
@@ -139,10 +139,8 @@ function populateWorkoutTable () {
         </tr>
       `
       tableHtml += tableRowHtml
-    } else {
-      break
     }
-  }
+  })
 
   tableHtml += `
     </tbody>
