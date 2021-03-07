@@ -48,7 +48,8 @@ body {
   }
 }
 
-#sign-up-frame {
+#sign-up-frame,
+#sign-in-frame {
   text-align: center;
   height: 100vh;
   > div:first-of-type {
@@ -86,6 +87,9 @@ body {
         min-width: 80px;
       }
     }
+  }
+  h3 {
+    font-family: 'Permanent Marker', cursive;
   }
 }
 

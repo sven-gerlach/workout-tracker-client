@@ -22,13 +22,15 @@ function onSignUp (event) {
       $('#sign-in-form button').click()
     })
     .then(() => {
+      // launch welcome modal
       const title = 'Welcome to ProLoad!'
       const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
       ui.showUserModal(title, body)
     })
     .catch(response => {
-      // Launch modal to alert user to the error
       console.log(response)
+      
+      // Launch modal to alert user to the error
       if (response.responseJSON.name === 'BadParamsError') {
         const title = 'Incorrect Password'
         const body = 'It seems the two passwords do not match. Please try again.'
@@ -62,8 +64,20 @@ function onSignIn (event) {
 
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
+
+      // launch modal with welcome message
+      const title = 'Welcome Back!'
+      const body = 'What will you do today?'
+      ui.showUserModal(title, body)
     })
-    .catch(console.error)
+    .catch(response => {
+      console.error(response)
+
+      // launch modal with error message
+      const title = 'Incorrect Account Information'
+      const body = 'It seems the account information provided, does not match our records. Please try again.'
+      ui.showUserModal(title, body)
+    })
 }
 
 function onSignOut () {
