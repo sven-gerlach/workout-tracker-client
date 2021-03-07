@@ -4,6 +4,7 @@ const api = require('./api')
 const store = require('./store')
 const ui = require('./ui')
 const dbSearch = require('./db_search')
+const graphData = require('./graph_data')
 
 // todo: add auto-sign in feature
 function onSignUp (event) {
@@ -173,7 +174,10 @@ function onShowGraph (event) {
       // grab selected exercise and pass it to a function to get all sets of this exercise
       const title = getFormFields(event.target).exercise.title
       const exercises = dbSearch.getAllExercisesOfType(title)
-      console.log(exercises)
+      return dbSearch.getWorkoutVolume(exercises)
+    })
+    .then(exerciseVolumes => {
+      graphData.exerciseVolume(exerciseVolumes)
     })
     .catch(console.error)
 }
