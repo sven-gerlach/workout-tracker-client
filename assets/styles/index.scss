@@ -25,13 +25,13 @@ body {
   text-align: center;
   height: 100vh;
   div:first-of-type {
-    height: 50vh;
+    height: 34vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
   }
   div:last-of-type {
-    height: 50vh;
+    height: 66vh;
     max-width: 600px;
     margin: 0 auto;
     display: flex;
@@ -40,7 +40,7 @@ body {
     align-items: center;
     button {
       margin: 0 30px;
-      flex: 50px 1 1;
+      flex: 1 1 50px;
     }
   }
   h3 {
@@ -48,8 +48,59 @@ body {
   }
 }
 
+#sign-up-frame {
+  text-align: center;
+  height: 100vh;
+  > div:first-of-type {
+    height: 34vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  form {
+    height: 66vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    div:first-of-type {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      input {
+        width: 52%;
+        margin: 5px;
+        background-color: rgba(240,248,255, 0.8);
+        border-radius: 5px;
+        padding: 0 5px;
+      }
+    }
+    div:last-of-type {
+      margin: 5px auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      width: 52%;
+      > * {
+        width: 28%;
+        min-width: 80px;
+      }
+    }
+  }
+}
+
+// Modal styling
+.modal-content {
+  background-color: rgba(0,0,0,0.8);
+}
+
 #exercise-volume-chart {
   width: 350px;
   height: 350px;
 }
 
+@media (max-height: 500px) {
+  html {
+    font-size: 12px;
+  }
+}
