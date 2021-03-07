@@ -97,6 +97,16 @@ function updatePersonalSettings (data) {
   })
 }
 
+function deleteWorkout (workoutId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/workouts/' + workoutId,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -106,5 +116,6 @@ module.exports = {
   setUpWorkout,
   selectExercise,
   createSet,
-  updatePersonalSettings
+  updatePersonalSettings,
+  deleteWorkout
 }

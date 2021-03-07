@@ -199,6 +199,21 @@ function onShowGraph (event) {
     .catch(console.error)
 }
 
+function onDeleteWorkout (event) {
+  event.preventDefault()
+  const workoutId = $(event.target).data().workoutId
+
+  api.deleteWorkout(workoutId)
+    .then(response => {
+      console.log(response)
+      return _getAllWorkouts()
+    })
+    .then(response => {
+      ui.populateWorkoutTable()
+    })
+    .catch(console.error)
+}
+
 function _getAllWorkouts () {
   // get all previous workouts and store them locally
   return api.getAllWorkouts()
@@ -223,5 +238,6 @@ module.exports = {
   onAddExerciseToWorkouts,
   onStatsButtonClick,
   onWorkoutHistoryButtonCLick,
-  onShowGraph
+  onShowGraph,
+  onDeleteWorkout
 }

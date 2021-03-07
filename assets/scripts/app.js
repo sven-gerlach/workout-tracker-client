@@ -28,4 +28,5 @@ $(() => {
   $('#workout-history-button').on('click', events.onWorkoutHistoryButtonCLick)
   $('#exercise-selection-stats').on('submit', events.onShowGraph)
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
+  $('#workout-history-table').on('click', events.onDeleteWorkout)
 })

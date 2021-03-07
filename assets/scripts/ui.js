@@ -109,9 +109,8 @@ function populateExerciseTitleSelector (exercises) {
   $('.used-exercise-titles').html(optionsString)
 }
 
-function populateWorkoutTable (event) {
+function populateWorkoutTable () {
   const limit = $('#number-of-workouts').val()
-  console.log(limit)
 
   let tableHtml = `
     <thead>
@@ -128,7 +127,6 @@ function populateWorkoutTable (event) {
 
   for (const workout of store.workouts) {
     if (counter <= limit || limit === 'all') {
-      console.log(counter)
       const date = _getDate(workout.createdAt)
       const duration = _getDuration(workout.createdAt, workout.updatedAt)
       const id = workout._id
