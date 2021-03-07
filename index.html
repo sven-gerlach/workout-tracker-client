@@ -16,6 +16,7 @@
         <nav id="nav-bar-frame">
           <button id="workout-button">Workout</button>
           <button id="stats-button">Stats</button>
+          <button id="workout-history-button">History</button>
           <button id="personal-settings-button">Personal</button>
           <button id="global-settings-button">Settings</button>
           <button id="security-button">Security</button>
@@ -48,7 +49,7 @@
         <section id="workout-frame">
           <button id="setup-workout-button">Let's Do This!</button>
         </section>
-        <section id="stats-frame">
+        <section id="graph-frame">
           <form id="exercise-selection-stats">
             <div>
               <label for="used-exercise-titles-stats">Select Exercise:</label>
@@ -59,6 +60,18 @@
             <input type="submit" value="Show Graph">
             <canvas id="exercise-volume-chart"></canvas>
           </form>
+        </section>
+        <section id="workout-history-frame">
+          <label for="number-of-workouts">Most recent:</label>
+          <select id="number-of-workouts">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="40">40</option>
+            <option value="all">All</option>
+          </select>
+          <table class="table table-striped" id="workout-history-table">
+            <!-- placeholder for dynamically inserted table content -->
+          </table>
         </section>
         <section id="security-frame">
           <form id="change-pw-form">

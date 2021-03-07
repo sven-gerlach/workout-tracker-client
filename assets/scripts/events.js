@@ -165,6 +165,15 @@ function onStatsButtonClick () {
   ui.showStatsFrame()
 }
 
+function onWorkoutHistoryButtonCLick () {
+  ui.showWorkoutHistoryFrame()
+  _getAllWorkouts()
+    .then(() => {
+      ui.populateWorkoutTable()
+    })
+    .catch(console.error)
+}
+
 function onShowGraph (event) {
   event.preventDefault()
   let exercises
@@ -213,5 +222,6 @@ module.exports = {
   onUpdatePersonalSettings,
   onAddExerciseToWorkouts,
   onStatsButtonClick,
+  onWorkoutHistoryButtonCLick,
   onShowGraph
 }

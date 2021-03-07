@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const moment = require('moment')
 
 function hideAllFrames () {
   $('#welcome-frame').hide()
@@ -13,7 +14,8 @@ function hideAllFrames () {
   $('#exercise-selection-frame').hide()
   $('#set-frame').hide()
   $('#personal-settings-frame').hide()
-  $('#stats-frame').hide()
+  $('#graph-frame').hide()
+  $('#workout-history-frame').hide()
 }
 
 function showWelcomeFrame () {
@@ -35,6 +37,18 @@ function showWorkoutFrame () {
   hideAllFrames()
   $('#nav-bar-frame').show()
   $('#workout-frame').show()
+}
+
+function showWorkoutHistoryFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#workout-history-frame').show()
+}
+
+function showStatsFrame () {
+  hideAllFrames()
+  $('#nav-bar-frame').show()
+  $('#graph-frame').show()
 }
 
 function showSecurityFrame () {
@@ -65,11 +79,6 @@ function showPersonalSettingsFrame () {
   $('#personal-settings-frame').show()
 }
 
-function showStatsFrame () {
-  hideAllFrames()
-  $('#nav-bar-frame').show()
-  $('#stats-frame').show()
-}
 
 function clearForm (id) {
   $('#' + id).trigger('reset')
@@ -100,6 +109,63 @@ function populateExerciseTitleSelector (exercises) {
   $('.used-exercise-titles').html(optionsString)
 }
 
+function populateWorkoutTable (event) {
+  const limit = $('#number-of-workouts').val()
+  console.log(limit)
+
+  let tableHtml = `
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Duration(min)</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+  `
+  let counter = 1
+
+  for (const workout of store.workouts) {
+    if (counter <= limit || limit === 'all') {
+      console.log(counter)
+      const date = _getDate(workout.createdAt)
+      const duration = _getDuration(workout.createdAt, workout.updatedAt)
+      const id = workout._id
+      const tableRowHtml = `
+        <tr>
+          <th scope="row">${counter++}</th>
+          <td>${date}</td>
+          <td>${duration}</td>
+          <td><button data-workout-id="${id}">x</button></td>
+        </tr>
+      `
+      tableHtml += tableRowHtml
+    } else {
+      break
+    }
+  }
+
+  tableHtml += `
+    </tbody>
+  `
+
+  // Append workout history to html table
+  $('#workout-history-table').html(tableHtml)
+
+  // returns date
+  function _getDate (dateString) {
+    return moment(dateString).format('MM/DD')
+  }
+
+  // returns duration in minutes
+  function _getDuration (start, end) {
+    start = new Date(start)
+    end = new Date(end)
+    return moment(end - start).format('mm')
+  }
+}
+
 function postWorkoutCleanUp () {
   showWorkoutFrame()
   $('#set-frame > p').text('Set 1')
@@ -112,15 +178,17 @@ module.exports = {
   showSignUpFrame,
   showSignInFrame,
   showWorkoutFrame,
+  showStatsFrame,
+  showWorkoutHistoryFrame,
   showSecurityFrame,
   showGlobalSettingsFrame,
   showExerciseSelectionFrame,
   showSetFrame,
   showPersonalSettingsFrame,
-  showStatsFrame,
   clearForm,
   updatePersonalSettingsFormPlaceholders,
   updateExerciseList,
   populateExerciseTitleSelector,
-  postWorkoutCleanUp
+  postWorkoutCleanUp,
+  populateWorkoutTable
 }

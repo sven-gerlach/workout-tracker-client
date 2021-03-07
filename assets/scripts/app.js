@@ -25,5 +25,7 @@ $(() => {
   $('#add-exercise-to-list').on('click', events.onAddExerciseToWorkouts)
   $('.reset-workout-frames').on('click', ui.postWorkoutCleanUp)
   $('#stats-button').on('click', events.onStatsButtonClick)
+  $('#workout-history-button').on('click', events.onWorkoutHistoryButtonCLick)
   $('#exercise-selection-stats').on('submit', events.onShowGraph)
+  $('#number-of-workouts').on('change', ui.populateWorkoutTable)
 })
