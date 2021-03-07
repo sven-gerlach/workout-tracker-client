@@ -49,7 +49,15 @@
           <button id="setup-workout-button">Let's Do This!</button>
         </section>
         <section id="stats-frame">
-
+          <form id="exercise-selection-stats">
+            <div>
+              <label for="used-exercise-titles-stats">Select Exercise:</label>
+              <select id="used-exercise-titles-stats" class="used-exercise-titles" name="exercise[title]">
+                <!-- placeholder for dynamically inserted <option> tags -->
+              </select>
+            </div>
+            <input type="submit" value="Show Graph">
+          </form>
         </section>
         <section id="security-frame">
           <form id="change-pw-form">
@@ -100,7 +108,7 @@
             </div>
             <div>
               <label for="used-exercise-titles">Select Exercise:</label>
-              <select id="used-exercise-titles" name="exercise[title]">
+              <select id="used-exercise-titles" class="used-exercise-titles" name="exercise[title]">
                 <!-- placeholder for dynamically inserted <option> tags -->
               </select>
             </div>

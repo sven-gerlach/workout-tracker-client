@@ -24,5 +24,6 @@ $(() => {
   $('#search-for-exercise-names').keyup(ui.updateExerciseList)
   $('#add-exercise-to-list').on('click', events.onAddExerciseToWorkouts)
   $('.reset-workout-frames').on('click', ui.postWorkoutCleanUp)
-  $('#stats-button').on('click', ui.showStatsFrame)
+  $('#stats-button').on('click', events.onStatsButtonClick)
+  $('#exercise-selection-stats').on('submit', events.onShowGraph)
 })

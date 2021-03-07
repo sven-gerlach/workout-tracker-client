@@ -157,6 +157,23 @@ function onUpdatePersonalSettings (event) {
     .catch(console.error)
 }
 
+function onStatsButtonClick () {
+  // get all previously used exercise titles and store them
+  store.exerciseNames = dbSearch.getUsedExerciseNames()
+
+  // populate exercise selector with all previously used exercises
+  ui.populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
+
+  ui.showStatsFrame()
+}
+
+function onShowGraph (event) {
+  event.preventDefault()
+  const { exercise } = getFormFields(event.target)
+  const exercises = dbSearch.getAllExerciseTypes(exercise.title)
+  console.log(exercises)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -167,5 +184,7 @@ module.exports = {
   onSetEntry,
   setupPersonalSettingsFrame,
   onUpdatePersonalSettings,
-  onAddExerciseToWorkouts
+  onAddExerciseToWorkouts,
+  onStatsButtonClick,
+  onShowGraph
 }

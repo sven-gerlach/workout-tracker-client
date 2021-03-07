@@ -97,7 +97,7 @@ function populateExerciseTitleSelector (exercises) {
   exercises.forEach(exercise => {
     optionsString += `<option value="${exercise}">${exercise}</option>`
   })
-  $('#used-exercise-titles').html(optionsString)
+  $('.used-exercise-titles').html(optionsString)
 }
 
 function postWorkoutCleanUp () {

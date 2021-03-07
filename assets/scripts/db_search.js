@@ -13,8 +13,12 @@ function getUsedExerciseNames () {
   return usedExerciseNames
 }
 
-
+// return an array with all the exercises of a specific title
+function getAllExerciseTypes (title) {
+  //
+}
 
 module.exports = {
-  getUsedExerciseNames
+  getUsedExerciseNames,
+  getAllExerciseTypes
 }
