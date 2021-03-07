@@ -31,12 +31,9 @@ function onSignIn (event) {
 
       // store user data and all historic workout data locally
       store.user = data.user
-      api.getAllWorkouts()
-        .then(response => {
-          console.log(response)
-          store.workouts = response.workouts
-        })
-        .catch(console.error)
+
+      // get all previous workouts and store them locally
+      _getAllWorkouts()
 
       // update the personal settings form placeholders with the downloaded user data
       ui.updatePersonalSettingsFormPlaceholders()
@@ -169,9 +166,27 @@ function onStatsButtonClick () {
 
 function onShowGraph (event) {
   event.preventDefault()
-  const { exercise } = getFormFields(event.target)
-  const exercises = dbSearch.getAllExerciseTypes(exercise.title)
-  console.log(exercises)
+
+  // get all previous workouts and store them locally
+  _getAllWorkouts()
+    .then(() => {
+      // grab selected exercise and pass it to a function to get all sets of this exercise
+      const title = getFormFields(event.target).exercise.title
+      const exercises = dbSearch.getAllExercisesOfType(title)
+      console.log(exercises)
+    })
+    .catch(console.error)
+}
+
+function _getAllWorkouts () {
+  // get all previous workouts and store them locally
+  return api.getAllWorkouts()
+    .then(response => {
+      console.log(response)
+      store.workouts = response.workouts
+      return Promise.resolve()
+    })
+    .catch(console.error)
 }
 
 module.exports = {
