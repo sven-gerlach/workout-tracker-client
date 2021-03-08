@@ -29,7 +29,7 @@ function onSignUp (event) {
     })
     .catch(response => {
       console.log(response)
-      
+
       // Launch modal to alert user to the error
       if (response.responseJSON.name === 'BadParamsError') {
         const title = 'Incorrect Password'
@@ -51,7 +51,7 @@ function onSignIn (event) {
   const formData = getFormFields(event.target)
   api.signIn(formData)
     .then(data => {
-      ui.showWorkoutFrame()
+      ui.showHomeFrame(event)
 
       // store user data and all historic workout data locally
       store.user = data.user
@@ -170,8 +170,11 @@ function onSetEntry (event) {
     .catch(console.error)
 }
 
-function setupPersonalSettingsFrame () {
-  ui.showPersonalSettingsFrame()
+function setupPersonalSettingsFrame (event) {
+  ui.showPersonalSettingsFrame(event)
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  ui.toggleNavBarListItems(currentNavBarListItem)
 }
 
 function onUpdatePersonalSettings (event) {
@@ -190,18 +193,18 @@ function onUpdatePersonalSettings (event) {
     .catch(console.error)
 }
 
-function onStatsButtonClick () {
+function onStatsButtonClick (event) {
   // get all previously used exercise titles and store them
   store.exerciseNames = dbSearch.getUsedExerciseNames()
 
   // populate exercise selector with all previously used exercises
   ui.populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
 
-  ui.showStatsFrame()
+  ui.showStatsFrame(event)
 }
 
-function onWorkoutHistoryButtonCLick () {
-  ui.showWorkoutHistoryFrame()
+function onWorkoutHistoryButtonCLick (event) {
+  ui.showWorkoutHistoryFrame(event)
   _getAllWorkouts()
     .then(() => {
       ui.populateWorkoutTable()

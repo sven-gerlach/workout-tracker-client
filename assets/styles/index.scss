@@ -93,16 +93,35 @@ body {
   }
 }
 
+// Navbar
+.navbar-brand:hover {
+  cursor: default;
+}
+
+// Home frame
+#home-frame {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div button {
+    font-size: 1.25rem;
+  }
+}
+
 // Modal styling
 .modal-content {
   background-color: rgba(0,0,0,0.8);
 }
 
+// Chart styling
 #exercise-volume-chart {
   width: 350px;
   height: 350px;
 }
 
+
+// Media queries
 @media (max-height: 500px) {
   html {
     font-size: 12px;

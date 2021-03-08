@@ -8,7 +8,7 @@ function hideAllFrames () {
   $('#sign-up-frame').hide()
   $('#sign-in-frame').hide()
   $('#nav-bar-frame').hide()
-  $('#workout-frame').hide()
+  $('#home-frame').hide()
   $('#security-frame').hide()
   $('#global-settings-frame').hide()
   $('#exercise-selection-frame').hide()
@@ -33,34 +33,59 @@ function showSignInFrame () {
   $('#sign-in-frame').show()
 }
 
-function showWorkoutFrame () {
+function showHomeFrame (event) {
   hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
+  $('#nav-bar-frame li:first').addClass('active')
   $('#nav-bar-frame').show()
-  $('#workout-frame').show()
+  $('#home-frame').show()
 }
 
-function showWorkoutHistoryFrame () {
+function showWorkoutHistoryFrame (event) {
   hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
   $('#nav-bar-frame').show()
   $('#workout-history-frame').show()
 }
 
-function showStatsFrame () {
+function showStatsFrame (event) {
   hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
   $('#nav-bar-frame').show()
   $('#graph-frame').show()
 }
 
-function showSecurityFrame () {
+function showSecurityFrame (event) {
   hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
   $('#nav-bar-frame').show()
   $('#security-frame').show()
 }
 
-function showGlobalSettingsFrame () {
+function showGlobalSettingsFrame (event) {
   hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
   $('#nav-bar-frame').show()
   $('#global-settings-frame').show()
+}
+
+function showPersonalSettingsFrame (event) {
+  hideAllFrames()
+  // toggle active class
+  const currentNavBarListItem = $(event.target).parents('li.nav-item')
+  toggleNavBarListItems(currentNavBarListItem)
+  $('#nav-bar-frame').show()
+  $('#personal-settings-frame').show()
 }
 
 function showExerciseSelectionFrame () {
@@ -72,13 +97,6 @@ function showSetFrame () {
   hideAllFrames()
   $('#set-frame').show()
 }
-
-function showPersonalSettingsFrame () {
-  hideAllFrames()
-  $('#nav-bar-frame').show()
-  $('#personal-settings-frame').show()
-}
-
 
 function clearForm (id) {
   $('#' + id).trigger('reset')
@@ -163,7 +181,7 @@ function populateWorkoutTable () {
 }
 
 function postWorkoutCleanUp () {
-  showWorkoutFrame()
+  showHomeFrame()
   $('#set-frame > p').text('Set 1')
   $('form').trigger('reset')
   delete store.workout
@@ -178,12 +196,18 @@ function showUserModal (title, body) {
   })
 }
 
+function toggleNavBarListItems (highlightListItem) {
+  // get all list items and remove the 'active' class
+  $('#nav-bar-frame li').removeClass('active')
+  highlightListItem.addClass('active')
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
   showSignInFrame,
-  showWorkoutFrame,
   showStatsFrame,
+  showHomeFrame,
   showWorkoutHistoryFrame,
   showSecurityFrame,
   showGlobalSettingsFrame,
@@ -196,5 +220,6 @@ module.exports = {
   populateExerciseTitleSelector,
   postWorkoutCleanUp,
   populateWorkoutTable,
-  showUserModal
+  showUserModal,
+  toggleNavBarListItems
 }

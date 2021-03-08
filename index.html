@@ -12,15 +12,40 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <header>
-        <nav id="nav-bar-frame">
-          <button id="workout-button">Workout</button>
-          <button id="stats-button">Stats</button>
-          <button id="workout-history-button">History</button>
-          <button id="personal-settings-button">Personal</button>
-          <button id="global-settings-button">Settings</button>
-          <button id="security-button">Security</button>
-          <button id="sign-out-button">Sign Out</button>
+      <header id="nav-bar-frame">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">ProLoad Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a id="home-frame-button" class="nav-link" href="#">Home</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  History
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a id="stats-button" class="dropdown-item" href="#">Statistics</a>
+                  <a id="workout-history-button" class="dropdown-item" href="#">Workouts</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a id="personal-settings-button" class="dropdown-item" href="#">About Me</a>
+                  <a id="global-settings-button" class="dropdown-item" href="#">Settings</a>
+                  <a id="security-button" class="dropdown-item" href="#">Security</a>
+                  <div class="dropdown-divider"></div>
+                  <a id="sign-out-button" class="dropdown-item" href="#">Sign Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
       <body>
@@ -67,8 +92,10 @@
             </div>
           </form>
         </section>
-        <section id="workout-frame">
-          <button id="setup-workout-button">Let's Do This!</button>
+        <section id="home-frame">
+          <div>
+            <button id="setup-workout-button" class="button">Setup New Workout</button>
+          </div>
         </section>
         <section id="graph-frame">
           <form id="exercise-selection-stats">
