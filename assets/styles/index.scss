@@ -116,7 +116,12 @@ body {
 
 // Chart styling
 #graph-frame div {
-  background-color: rgba(0,0,0,0.8);
+  margin: 10px 0 0 0;
+  select {
+    background-color: transparent;
+    color: aliceblue;
+    margin-left: 15px;
+  }
 }
 
 #exercise-volume-chart {
