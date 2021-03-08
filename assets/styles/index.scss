@@ -21,6 +21,14 @@ body {
   border-radius: 30px;
 }
 
+.select {
+  background-color: rgba(240, 248, 255, 0.8);
+  border-radius: 5px;
+  padding: 0 5px;
+  border: aliceblue 1px solid;
+  min-width: 80px;
+}
+
 #welcome-frame {
   text-align: center;
   height: 100vh;
@@ -118,9 +126,8 @@ body {
 #graph-frame div {
   margin: 10px 0 0 0;
   select {
-    background-color: transparent;
-    color: aliceblue;
-    margin-left: 15px;
+    margin: 15px 0 0 15px;
+    text-align: center;
   }
 }
 
@@ -129,29 +136,73 @@ body {
   height: 350px;
 }
 
+// Workout history table
 #workout-history-frame {
   margin: 0 auto;
   div {
     margin: 15px 0 0 0;
 
     label {
-      margin-left: 15px;
+      margin: 0 15px;
     }
 
     select {
-      background-color: transparent;
-      color: aliceblue;
+      text-align: center;
     }
 
     table {
       text-align: center;
-      margin: 10px auto 0px auto;
+      margin: 15px auto 0px auto;
       color: rgba(240, 248, 255, 1);
       border: none;
       opacity: 0.85;
       max-width: 800px;
     }
   }
+}
+
+// Personal settings form
+#personal-settings-form,
+#change-pw-form {
+  margin: 15px auto 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 700px;
+  width: 60%;
+
+  div:not(:last-child) {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    input {
+      background-color: rgba(240, 248, 255, 0.8);
+      border-radius: 5px;
+      border: aliceblue 1px solid;
+      padding: 0 5px;
+    }
+    select {
+      text-align: left;
+    }
+  }
+  .button {
+    margin-top: 20px;
+  }
+}
+
+#global-settings-frame {
+  label {
+    margin: 15px;
+  }
+  select {
+    text-align: center;
+  }
+}
+
+//Security / change password frame
+#security-frame {
+
 }
 
 // Media queries

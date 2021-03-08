@@ -99,7 +99,7 @@
         </section>
         <section id="graph-frame">
           <div>
-            <select id="used-exercise-titles-stats" class="used-exercise-titles" name="exercise[title]">
+            <select id="used-exercise-titles-stats" class="used-exercise-titles select" name="exercise[title]">
               <!-- placeholder for dynamically inserted <option> tags [all the user's exercises stored in the database] -->
             </select>
             <canvas id="exercise-volume-chart"></canvas>
@@ -108,7 +108,7 @@
         <section id="workout-history-frame">
           <div>
             <label for="number-of-workouts">Most recent:</label>
-            <select id="number-of-workouts">
+            <select id="number-of-workouts" class="select">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="40">40</option>
@@ -121,14 +121,20 @@
         </section>
         <section id="security-frame">
           <form id="change-pw-form">
-            <input type="password" name="passwords[old]" placeholder="old password" required>
-            <input type="password" name="passwords[new]" placeholder="new password" required>
-            <input type="submit" value="Submit">
+            <div>
+              <input type="password" name="passwords[old]" placeholder="old password" required>
+            </div>
+            <div>
+              <input type="password" name="passwords[new]" placeholder="new password" required>
+            </div>
+            <div>
+              <input class="button" type="submit" value="Submit">
+            </div>
           </form>
         </section>
         <section id="global-settings-frame">
           <label for="weight-unit">Weight Unit:</label>
-          <select id="weight-unit">
+          <select id="weight-unit" class="select">
             <option value="lb">lb</option>
             <option value="kg">kg</option>
           </select>
@@ -149,7 +155,7 @@
             </div>
             <div>
               <label for="experience">Experience:</label>
-              <select id="experience" name="user[experience]">
+              <select class="select" id="experience" name="user[experience]">
                 <option value=""></option>
                 <option value="Rookie">Rookie</option>
                 <option value="Amateur">Amateur</option>
@@ -157,7 +163,9 @@
                 <option value="Pro">Pro</option>
               </select>
             </div>
-            <input type="submit" value="Submit">
+            <div>
+              <input class="button" type="submit" value="Submit">
+            </div>
           </form>
         </section>
         <section id="exercise-selection-frame">
