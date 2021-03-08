@@ -244,13 +244,14 @@ function onShowGraph (event) {
 
 function onDeleteWorkout (event) {
   event.preventDefault()
-  const workoutId = $(event.target).data().workoutId
-
+  // Need to make sure the right parent object is selected regardless of whether user clicks on
+  // the cross in the center or on the circle around it
+  const workoutId = $(event.target.parentElement).data().workoutId || $(event.target).data().workoutId
+  console.log(workoutId)
   ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
   $('#confirm-delete-button').on('click', () => {
     api.deleteWorkout(workoutId)
-      .then(response => {
-        console.log(response)
+      .then(() => {
         return _getAllWorkouts()
       })
       .then(() => {
