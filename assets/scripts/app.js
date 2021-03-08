@@ -26,7 +26,7 @@ $(() => {
   $('.reset-workout-frames').on('click', ui.postWorkoutCleanUp)
   $('#stats-button').on('click', events.onStatsButtonClick)
   $('#workout-history-button').on('click', events.onWorkoutHistoryButtonCLick)
-  $('#exercise-selection-stats').on('submit', events.onShowGraph)
+  $('#used-exercise-titles-stats').on('change', events.onShowGraph)
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
 })

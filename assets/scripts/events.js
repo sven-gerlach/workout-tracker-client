@@ -220,7 +220,7 @@ function onShowGraph (event) {
   _getAllWorkouts()
     .then(() => {
       // grab selected exercise and pass it to a function to get all sets of this exercise
-      const title = getFormFields(event.target).exercise.title
+      const title = $(event.target).val()
       exercises = dbSearch.getAllExercisesOfType(title)
       const volume = dbSearch.getWorkoutVolume(exercises)
       return volume
