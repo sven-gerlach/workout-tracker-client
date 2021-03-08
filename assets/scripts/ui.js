@@ -2,6 +2,7 @@
 
 const store = require('./store')
 const moment = require('moment')
+const api = require('./api')
 
 function hideAllFrames () {
   $('#welcome-frame').hide()
@@ -187,8 +188,18 @@ function populateWorkoutTable () {
 
 function postWorkoutCleanUp () {
   showHomeFrame()
+  // reset the set counter to 1
   $('#set-frame > p').text('Set 1')
   $('form').trigger('reset')
+
+  // if current workout's exercise array is empty delete the workout from the db
+  if (store.workout.exercise.length === 0) {
+    api.deleteWorkout(store.workout._id)
+      .then(console.log)
+      .catch(console.error)
+  }
+
+  // delete workout from local storage
   delete store.workout
 }
 
@@ -216,6 +227,10 @@ function toggleNavBarListItems (highlightListItem) {
   highlightListItem.addClass('active')
 }
 
+function toggleExerciseSearchBar () {
+  $('#search-exercise-text-box').toggle('fast')
+}
+
 module.exports = {
   showWelcomeFrame,
   showSignUpFrame,
@@ -236,5 +251,6 @@ module.exports = {
   populateWorkoutTable,
   showUserModal,
   showWarningModal,
-  toggleNavBarListItems
+  toggleNavBarListItems,
+  toggleExerciseSearchBar
 }

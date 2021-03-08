@@ -113,6 +113,11 @@ function onSetUpWorkout () {
   api.setUpWorkout(weightUnit)
     .then(response => {
       store.workout = response.workout
+
+      // ensure tick-mark is removed from exercise search check box
+      $('#search-exercise-checkbox').prop('checked', false)
+
+      // show exercise selection frame
       ui.showExerciseSelectionFrame()
 
       // get all previously used exercise titles and store them
@@ -133,15 +138,26 @@ function onAddExerciseToWorkouts () {
 
 function onExerciseSelection (event) {
   event.preventDefault()
-  const workoutId = store.workout._id
-  const data = getFormFields(event.target)
-  api.selectExercise(workoutId, data)
-    .then(response => {
-      ui.showSetFrame()
-      store.workout.exercise.push(response.exercise)
-      ui.clearForm(event.originalEvent.originalTarget.id)
-    })
-    .catch(console.error)
+
+  // if exercise selector is empty, show a modal informing the user that they first need
+  // to create a new exercise.
+  if ($('#used-exercise-titles').val() == null) {
+    // launch modal with message
+    const title = 'Please Create a New Exercise First'
+    const body = 'To create a new exercise, add a tick to the checkbox, enter the name of the exercise, and press Add.'
+    ui.showUserModal(title, body)
+  } else {
+    // if exercise selector is populated then execute ajax call and show set frame
+    const workoutId = store.workout._id
+    const data = getFormFields(event.target)
+    api.selectExercise(workoutId, data)
+      .then(response => {
+        ui.showSetFrame()
+        store.workout.exercise.push(response.exercise)
+        ui.clearForm(event.originalEvent.originalTarget.id)
+      })
+      .catch(console.error)
+  }
 }
 
 function onSetEntry (event) {
@@ -247,7 +263,6 @@ function onDeleteWorkout (event) {
   // Need to make sure the right parent object is selected regardless of whether user clicks on
   // the cross in the center or on the circle around it
   const workoutId = $(event.target.parentElement).data().workoutId || $(event.target).data().workoutId
-  console.log(workoutId)
   ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
   $('#confirm-delete-button').on('click', () => {
     api.deleteWorkout(workoutId)
@@ -274,7 +289,6 @@ function _getAllWorkouts () {
   // get all previous workouts and store them locally
   return api.getAllWorkouts()
     .then(response => {
-      console.log(response)
       store.workouts = response.workouts
       return Promise.resolve()
     })

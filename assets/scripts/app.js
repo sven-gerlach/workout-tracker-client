@@ -18,7 +18,7 @@ $(() => {
   $('#sign-out-button').on('click', events.onSignOut)
   $('#change-pw-form').on('submit', events.onChangePassword)
   $('#setup-workout-button').on('click', events.onSetUpWorkout)
-  $('#exercise-selection-frame').on('submit', events.onExerciseSelection)
+  $('#exercise-selection-form').on('submit', events.onExerciseSelection)
   $('#set-form').on('submit', events.onSetEntry)
   $('#personal-settings-form').on('submit', events.onUpdatePersonalSettings)
   $('#search-for-exercise-names').keyup(ui.updateExerciseList)
@@ -29,7 +29,5 @@ $(() => {
   $('#used-exercise-titles-stats').on('change', events.onShowGraph)
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
-  $('#search-exercise-checkbox').on('click', function () {
-    $('#search-exercise-text-box').toggle('fast')
-  })
+  $('#search-exercise-checkbox').on('click', ui.toggleExerciseSearchBar)
 })

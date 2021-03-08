@@ -169,7 +169,7 @@
           </form>
         </section>
         <section id="exercise-selection-frame">
-          <form id="exercise-selection">
+          <form id="exercise-selection-form">
             <div>
               <select id="used-exercise-titles" class="used-exercise-titles select" name="exercise[title]">
                 <!-- placeholder for dynamically inserted <option> tags -->
@@ -177,13 +177,12 @@
             </div>
             <div class="form-check">
               <label class="container">
-                <!-- todo: Why does this checkbox require a checked attribute for the box to be unchecked? -->
-                <input type="checkbox" id="search-exercise-checkbox" checked>
+                <input type="checkbox" id="search-exercise-checkbox">
                 <span class="checkmark"></span>Search list / add exercise?
               </label>
             </div>
             <div id="search-exercise-text-box">
-              <input id="search-for-exercise-names" type="text" placeholder="search exercise list" autocomplete="off">
+              <input id="search-for-exercise-names" type="text" placeholder="search / add exercise" autocomplete="off">
               <button class="button" id="add-exercise-to-list" type="button">Add</button>
             </div>
             <div>
