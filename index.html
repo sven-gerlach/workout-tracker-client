@@ -106,16 +106,18 @@
           </div>
         </section>
         <section id="workout-history-frame">
-          <label for="number-of-workouts">Most recent:</label>
-          <select id="number-of-workouts">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="40">40</option>
-            <option value="all">All</option>
-          </select>
-          <table class="table table-striped" id="workout-history-table">
-            <!-- placeholder for dynamically inserted table content -->
-          </table>
+          <div>
+            <label for="number-of-workouts">Most recent:</label>
+            <select id="number-of-workouts">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+              <option value="all">All</option>
+            </select>
+            <table class="table table-hover table-sm table-striped table-dark" id="workout-history-table">
+              <!-- placeholder for dynamically inserted table content -->
+            </table>
+          </div>
         </section>
         <section id="security-frame">
           <form id="change-pw-form">
@@ -197,6 +199,21 @@
               <div class="modal-body" id="user-message-body"></div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for user warnings -->
+        <div class="modal fade" id="warning-message-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="warning-message-title"></h5>
+              </div>
+              <div class="modal-body" id="warning-message-body"></div>
+              <div class="modal-footer">
+                <button id="cancel-delete-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-delete-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
               </div>
             </div>
           </div>

@@ -246,15 +246,27 @@ function onDeleteWorkout (event) {
   event.preventDefault()
   const workoutId = $(event.target).data().workoutId
 
-  api.deleteWorkout(workoutId)
-    .then(response => {
-      console.log(response)
-      return _getAllWorkouts()
-    })
-    .then(response => {
-      ui.populateWorkoutTable()
-    })
-    .catch(console.error)
+  ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
+  $('#confirm-delete-button').on('click', () => {
+    api.deleteWorkout(workoutId)
+      .then(response => {
+        console.log(response)
+        return _getAllWorkouts()
+      })
+      .then(() => {
+        ui.populateWorkoutTable()
+        _deleteEventListeners()
+      })
+      .catch(() => {
+        _deleteEventListeners()
+      })
+  })
+  $('#cancel-delete-button').on('click', _deleteEventListeners)
+
+  function _deleteEventListeners () {
+    $('#confirm-delete-button').off()
+    $('#cancel-delete-button').off()
+  }
 }
 
 function _getAllWorkouts () {

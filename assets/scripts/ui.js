@@ -155,7 +155,7 @@ function populateWorkoutTable () {
           <th scope="row">${counter++}</th>
           <td>${date}</td>
           <td>${duration}</td>
-          <td><button data-workout-id="${id}">x</button></td>
+          <td><button type="button" class="button" data-workout-id="${id}"><span aria-hidden="true">&times;</span></button></td>
         </tr>
       `
       tableHtml += tableRowHtml
@@ -198,6 +198,15 @@ function showUserModal (title, body) {
   })
 }
 
+function showWarningModal (title, body) {
+  $('#warning-message-title').text(title)
+  $('#warning-message-body').text(body)
+  $('#warning-message-modal').modal({
+    backdrop: 'static',
+    show: true
+  })
+}
+
 function toggleNavBarListItems (highlightListItem) {
   // get all list items and remove the 'active' class
   $('#nav-bar-frame li').removeClass('active')
@@ -223,5 +232,6 @@ module.exports = {
   postWorkoutCleanUp,
   populateWorkoutTable,
   showUserModal,
+  showWarningModal,
   toggleNavBarListItems
 }

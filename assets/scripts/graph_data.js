@@ -16,7 +16,7 @@ Chart.plugins.register({
       ctx.save()
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.font = '16px'
+      ctx.font = '25px'
       ctx.fillText('More than 2 data points are needed.', width / 2, height / 2)
       ctx.restore()
     }
