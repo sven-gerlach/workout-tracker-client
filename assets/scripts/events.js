@@ -102,7 +102,11 @@ function onChangePassword (event) {
       ui.clearForm(event.delegateTarget.id)
     })
     .catch(response => {
-      console.error(response)
+      // launch modal with error message
+      const title = 'Incorrect Password'
+      const body = 'It seems the old password provided, does not match our records. Please try again.'
+      ui.showUserModal(title, body)
+
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
