@@ -19,14 +19,16 @@ body {
   color: aliceblue;
   border: aliceblue 1px solid;
   border-radius: 30px;
+  height: 22px;
 }
 
 .select {
   background-color: rgba(240, 248, 255, 0.8);
   border-radius: 5px;
   padding: 0 5px;
-  border: aliceblue 1px solid;
+  border: none;
   min-width: 80px;
+  height: 22px;
 }
 
 #welcome-frame {
@@ -80,7 +82,9 @@ body {
         margin: 5px;
         background-color: rgba(240,248,255, 0.8);
         border-radius: 5px;
+        border: none;
         padding: 0 5px;
+        height: 22px;
       }
     }
     div:last-of-type {
@@ -114,6 +118,7 @@ body {
   align-items: center;
   div button {
     font-size: 1.25rem;
+    height: 30px;
   }
 }
 
@@ -161,7 +166,7 @@ body {
   }
 }
 
-// Personal settings form
+// Personal settings form and security frame
 #personal-settings-form,
 #change-pw-form {
   margin: 15px auto 10px auto;
@@ -179,8 +184,9 @@ body {
     input {
       background-color: rgba(240, 248, 255, 0.8);
       border-radius: 5px;
-      border: aliceblue 1px solid;
+      border: none;
       padding: 0 5px;
+      height: 22px;
     }
     select {
       text-align: left;
@@ -200,9 +206,41 @@ body {
   }
 }
 
-//Security / change password frame
-#security-frame {
+// Select exercise frame
+#exercise-selection-frame form {
+  margin: 15px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  width: 70%;
 
+  div:not(:last-of-type) input {
+    background-color: rgba(240, 248, 255, 0.8);
+    border-radius: 5px;
+    border: none;
+    padding: 0 5px;
+    height: 22px;
+  }
+
+  div {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    > * {
+      flex: 1 1 80px;
+      margin: 0 5px;
+    }
+  }
+
+  div:first-of-type {
+    input {
+      min-width: 150px;
+    }
+  }
 }
 
 // Media queries

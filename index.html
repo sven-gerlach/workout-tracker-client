@@ -172,17 +172,20 @@
           <form id="exercise-selection">
             <div>
               <input id="search-for-exercise-names" type="text" placeholder="search for exercise" autocomplete="off">
-              <button id="add-exercise-to-list" type="button">Add</button>
+              <button class="button" id="add-exercise-to-list" type="button">Add</button>
             </div>
             <div>
-              <label for="used-exercise-titles">Select Exercise:</label>
-              <select id="used-exercise-titles" class="used-exercise-titles" name="exercise[title]">
+              <select id="used-exercise-titles" class="used-exercise-titles select" name="exercise[title]">
                 <!-- placeholder for dynamically inserted <option> tags -->
               </select>
             </div>
-            <input type="text" name="exercise[description]" placeholder="description (optional)">
-            <input type="submit" value="Start First Set">
-            <button type="button" class="reset-workout-frames">I'm Spent!</button>
+            <div>
+              <input type="text" name="exercise[description]" placeholder="description (optional)">
+            </div>
+            <div>
+              <input class="button" type="submit" value="Start First Set">
+              <button type="button" class="reset-workout-frames button">Stop Workout</button>
+            </div>
           </form>
         </section>
         <section id="set-frame">
