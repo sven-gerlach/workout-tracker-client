@@ -171,13 +171,20 @@
         <section id="exercise-selection-frame">
           <form id="exercise-selection">
             <div>
-              <input id="search-for-exercise-names" type="text" placeholder="search for exercise" autocomplete="off">
-              <button class="button" id="add-exercise-to-list" type="button">Add</button>
-            </div>
-            <div>
               <select id="used-exercise-titles" class="used-exercise-titles select" name="exercise[title]">
                 <!-- placeholder for dynamically inserted <option> tags -->
               </select>
+            </div>
+            <div class="form-check">
+              <label class="container">
+                <!-- todo: Why does this checkbox require a checked attribute for the box to be unchecked? -->
+                <input type="checkbox" id="search-exercise-checkbox" checked>
+                <span class="checkmark"></span>Search list / add exercise?
+              </label>
+            </div>
+            <div id="search-exercise-text-box">
+              <input id="search-for-exercise-names" type="text" placeholder="search exercise list" autocomplete="off">
+              <button class="button" id="add-exercise-to-list" type="button">Add</button>
             </div>
             <div>
               <input type="text" name="exercise[description]" placeholder="description (optional)">

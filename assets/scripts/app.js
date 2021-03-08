@@ -29,4 +29,7 @@ $(() => {
   $('#used-exercise-titles-stats').on('change', events.onShowGraph)
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
+  $('#search-exercise-checkbox').on('click', function () {
+    $('#search-exercise-text-box').toggle('fast')
+  })
 })

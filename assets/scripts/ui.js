@@ -16,6 +16,9 @@ function hideAllFrames () {
   $('#personal-settings-frame').hide()
   $('#graph-frame').hide()
   $('#workout-history-frame').hide()
+  // always hide the search text box (it is toggled by the
+  // event listener on a check box in the exercise frame
+  $('#search-exercise-text-box').hide()
 }
 
 function showWelcomeFrame () {
