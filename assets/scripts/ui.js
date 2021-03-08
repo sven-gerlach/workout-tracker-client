@@ -36,8 +36,10 @@ function showSignInFrame () {
 function showHomeFrame (event) {
   hideAllFrames()
   // toggle active class
-  const currentNavBarListItem = $(event.target).parents('li.nav-item')
-  toggleNavBarListItems(currentNavBarListItem)
+  if (event) {
+    const currentNavBarListItem = $(event.target).parents('li.nav-item')
+    toggleNavBarListItems(currentNavBarListItem)
+  }
   $('#nav-bar-frame li:first').addClass('active')
   $('#nav-bar-frame').show()
   $('#home-frame').show()

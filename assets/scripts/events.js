@@ -201,6 +201,7 @@ function onStatsButtonClick (event) {
   ui.populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
 
   ui.showStatsFrame(event)
+  onShowGraph()
 }
 
 function onWorkoutHistoryButtonCLick (event) {
@@ -213,14 +214,18 @@ function onWorkoutHistoryButtonCLick (event) {
 }
 
 function onShowGraph (event) {
-  event.preventDefault()
   let exercises
 
   // get all previous workouts and store them locally
   _getAllWorkouts()
     .then(() => {
       // grab selected exercise and pass it to a function to get all sets of this exercise
-      const title = $(event.target).val()
+      let title
+      if (event == null) {
+        title = $('used-exercise-titles-stats').val()
+      } else {
+        title = $(event.target).val()
+      }
       exercises = dbSearch.getAllExercisesOfType(title)
       const volume = dbSearch.getWorkoutVolume(exercises)
       return volume

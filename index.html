@@ -13,8 +13,8 @@
     </head>
     <body>
       <header id="nav-bar-frame">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">ProLoad Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">ProLoad</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -98,15 +98,12 @@
           </div>
         </section>
         <section id="graph-frame">
-          <form id="exercise-selection-stats">
-            <div>
-              <label for="used-exercise-titles-stats">Exercise:</label>
-              <select id="used-exercise-titles-stats" class="used-exercise-titles" name="exercise[title]">
-                <!-- placeholder for dynamically inserted <option> tags [all the user's exercises stored in the database] -->
-              </select>
-            </div>
+          <div>
+            <select id="used-exercise-titles-stats" class="used-exercise-titles form-control form-control-sm" name="exercise[title]">
+              <!-- placeholder for dynamically inserted <option> tags [all the user's exercises stored in the database] -->
+            </select>
             <canvas id="exercise-volume-chart"></canvas>
-          </form>
+          </div>
         </section>
         <section id="workout-history-frame">
           <label for="number-of-workouts">Most recent:</label>
