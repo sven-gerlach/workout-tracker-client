@@ -49,6 +49,16 @@ function changePassword (data) {
   })
 }
 
+function deleteUserAccount () {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/users/' + store.user._id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 function setUpWorkout (weightUnit) {
   return $.ajax({
     method: 'POST',
@@ -113,6 +123,7 @@ module.exports = {
   getAllWorkouts,
   signOut,
   changePassword,
+  deleteUserAccount,
   setUpWorkout,
   selectExercise,
   createSet,

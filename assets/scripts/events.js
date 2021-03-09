@@ -99,7 +99,7 @@ function onSignIn (event) {
 
 function onSignOut () {
   api.signOut()
-    .then(response => {
+    .then(() => {
       for (const key in store) {
         delete store[key]
       }
@@ -138,6 +138,47 @@ function onChangePassword (event) {
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
+}
+
+function onDeleteAccount (event) {
+  event.preventDefault()
+  console.log('success')
+  // show modal that warns the user that the deletion is irreversible
+  const title = 'Deletion is Irreversible!'
+  const body = 'Please confirm you would like to delete your account irreversibly.'
+  ui.showDeleteUserModal(title, body)
+
+  // add event listener to the confirm delete user button
+  $('#confirm-delete-user-button').one('click', () => {
+    api.deleteUserAccount()
+      .then(() => {
+        const title = 'Your Account is Deleted!'
+        const body = 'We are sad to see you go.'
+        ui.showUserModal(title, body)
+        // delete all keys of the store object
+        for (const key in store) {
+          delete store[key]
+        }
+        // trigger reset of all forms
+        $('form').trigger('reset')
+
+        // collapse navbar
+        $('header nav button').addClass('collapsed')
+        $('header nav div').removeClass('show')
+
+        // show welcome frame
+        ui.showWelcomeFrame()
+
+        // remove event handler from cancel button
+        $('#cancel-delete-user-button').off()
+      })
+      .catch()
+  })
+
+  // add event listener to cancel button
+  $('#cancel-delete-user-button').one('click', () => {
+    $('#confirm-delete-user-button').off()
+  })
 }
 
 function onSetUpWorkout () {
@@ -374,6 +415,7 @@ Object.assign(module.exports, {
   onSignIn,
   onSignOut,
   onChangePassword,
+  onDeleteAccount,
   onSetUpWorkout,
   onExerciseSelection,
   onSetEntry,

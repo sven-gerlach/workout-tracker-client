@@ -253,6 +253,15 @@ function showContinueSetModal (title, body) {
   })
 }
 
+function showDeleteUserModal (title, body) {
+  $('#delete-user-message-title').text(title)
+  $('#delete-user-message-body').text(body)
+  $('#delete-user-warning-modal').modal({
+    backdrop: 'static',
+    show: true
+  })
+}
+
 function toggleNavBarListItems (highlightListItem) {
   // get all list items and remove the 'active' class
   $('#nav-bar-frame li').removeClass('active')
@@ -310,6 +319,7 @@ Object.assign(module.exports, {
   showWarningModal,
   showExitWorkoutModal,
   showContinueSetModal,
+  showDeleteUserModal,
   toggleNavBarListItems,
   toggleExerciseSearchBar,
   invokeSpinner

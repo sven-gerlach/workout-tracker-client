@@ -17,6 +17,7 @@ $(() => {
   $('#global-settings-button').on('click', ui.showGlobalSettingsFrame)
   $('#sign-out-button').on('click', events.onSignOut)
   $('#change-pw-form').on('submit', events.onChangePassword)
+  $('#delete-account-form').on('submit', events.onDeleteAccount)
   $('#setup-workout-button').on('click', events.onSetUpWorkout)
   $('#exercise-selection-form').on('submit', events.onExerciseSelection)
   $('#set-form').on('submit', events.onSetEntry)
