@@ -169,9 +169,10 @@ body {
   }
 }
 
-// Personal settings form and security frame
+// Personal settings form
 #personal-settings-form,
-#change-pw-form {
+#change-pw-form,
+#delete-account-form {
   margin: 15px auto 10px auto;
   display: flex;
   flex-direction: column;
@@ -200,6 +201,26 @@ body {
   }
 }
 
+#change-pw-form {
+  .button {
+    min-width: 140px
+  }
+}
+
+#delete-account-form {
+  h4 {
+    margin: 25px 0 6px 0;
+  }
+  .button {
+    margin: 15px 0;
+    width: 140px;
+    &:hover {
+      background-color: rgba(197,67,67,0.8);
+      transition: background-color 1s;
+    }
+  }
+}
+
 #global-settings-frame {
   label {
     margin: 15px;
@@ -211,7 +232,7 @@ body {
 
 // Select exercise frame
 #exercise-selection-frame form {
-  margin: 30px auto 0 auto;
+  margin: 25px auto 10px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,7 +241,7 @@ body {
 
   #end-workout-button:hover {
     background-color: rgba(197,67,67,0.8);
-    transition: background-color 2s;
+    transition: background-color 1s;
   }
 
   div:not(:last-of-type) {

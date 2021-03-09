@@ -39,7 +39,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a id="personal-settings-button" class="dropdown-item" href="#">About Me</a>
                   <a id="global-settings-button" class="dropdown-item" href="#">Settings</a>
-                  <a id="security-button" class="dropdown-item" href="#">Security</a>
+                  <a id="security-button" class="dropdown-item" href="#">Account</a>
                   <div class="dropdown-divider"></div>
                   <a id="sign-out-button" class="dropdown-item" href="#">Sign Out</a>
                 </div>
@@ -121,6 +121,7 @@
         </section>
         <section id="security-frame">
           <form id="change-pw-form">
+            <h4>Change Password</h4>
             <div>
               <input type="password" name="passwords[old]" placeholder="old password" required>
             </div>
@@ -129,6 +130,12 @@
             </div>
             <div>
               <input class="button" type="submit" value="Submit">
+            </div>
+          </form>
+          <form id="delete-account-form">
+            <h4>Delete Account</h4>
+            <div>
+              <input class="button" type="submit" value="Delete Account">
             </div>
           </form>
         </section>

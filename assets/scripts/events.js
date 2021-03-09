@@ -44,6 +44,7 @@ function onSignUp (event) {
       })
     })
     .catch(response => {
+      spinner.stop()
       // Launch modal to alert user to the error
       if (response.responseJSON.name === 'BadParamsError') {
         const title = 'Incorrect Password'
@@ -86,8 +87,8 @@ function onSignIn (event) {
       const body = 'What will you do today?'
       ui.showUserModal(title, body)
     })
-    .catch(response => {
-      console.error(response)
+    .catch(() => {
+      spinner.stop()
 
       // launch modal with error message
       const title = 'Incorrect Account Information'
