@@ -11,41 +11,52 @@ function onSignUp (event) {
   const formData = getFormFields(event.target)
   api.signUp(formData)
     .then(() => {
-      // send id of form element to a function that clears that form
-      ui.clearForm(event.delegateTarget.id)
+      // delete formData.credentials.password_confirmation
+      // console.log(formData)
+      return api.signIn(formData)
+        .then(data => {
+          ui.showHomeFrame()
 
-      // launch welcome modal
-      const title = 'Welcome to ProLoad!'
-      const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
-      ui.showUserModal(title, body)
-      return new Promise((resolve, reject) => {
-        $('#acknowledge-button').on('click', () => {
-          resolve()
+          // store user data and all historic workout data locally
+          store.user = data.user
+
+          // get all previous workouts and store them locally
+          getAllWorkouts()
+
+          // update the personal settings form placeholders with the downloaded user data
+          ui.updatePersonalSettingsFormPlaceholders()
         })
-      })
-    })
-    // .then(() => {
-    //   // insert pswd and email into sign-in form and then click sign-in button
-    //   $('#sign-in-form input:first-child').val(formData.credentials.email)
-    //   $('#sign-in-form input:nth-child(2)').val(formData.credentials.password)
-    //   $('#sign-in-form button').click()
-    // })
-    .catch(response => {
-      console.log(response)
+        .then(() => {
+          // send id of form element to a function that clears that form
+          ui.clearForm(event.delegateTarget.id)
 
-      // Launch modal to alert user to the error
-      if (response.responseJSON.name === 'BadParamsError') {
-        const title = 'Incorrect Password'
-        const body = 'It seems the two passwords do not match. Please try again.'
-        ui.showUserModal(title, body)
-      } else {
-        const title = 'E-Mail Already Exists'
-        const body = 'A user with that email seems to exist already. Please use a different e-mail address.'
-        ui.showUserModal(title, body)
-      }
+          // launch welcome modal
+          const title = 'Welcome to ProLoad!'
+          const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
+          ui.showUserModal(title, body)
+          return new Promise((resolve, reject) => {
+            $('#acknowledge-button').on('click', () => {
+              resolve()
+            })
+          })
+        })
+        .catch(response => {
+          console.log(response)
 
-      // send id of form element to a function that clears that form
-      ui.clearForm(event.delegateTarget.id)
+          // Launch modal to alert user to the error
+          if (response.responseJSON.name === 'BadParamsError') {
+            const title = 'Incorrect Password'
+            const body = 'It seems the two passwords do not match. Please try again.'
+            ui.showUserModal(title, body)
+          } else {
+            const title = 'E-Mail Already Exists'
+            const body = 'A user with that email seems to exist already. Please use a different e-mail address.'
+            ui.showUserModal(title, body)
+          }
+
+          // send id of form element to a function that clears that form
+          ui.clearForm(event.delegateTarget.id)
+        })
     })
 }
 
@@ -54,7 +65,7 @@ function onSignIn (event) {
   const formData = getFormFields(event.target)
   api.signIn(formData)
     .then(data => {
-      ui.showHomeFrame(event)
+      ui.showHomeFrame()
 
       // store user data and all historic workout data locally
       store.user = data.user
