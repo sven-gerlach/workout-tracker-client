@@ -194,6 +194,8 @@ function onSetEntry (event) {
         ui.updateExerciseSelectionBox()
         $('#set-frame h4').text('Set 1')
         ui.showExerciseSelectionFrame()
+        // ensure tick-mark is removed from exercise search check box
+        $('#search-exercise-checkbox').prop('checked', false)
       })
       function _removeEventListeners () {
         $('#continue-set-button').off()
