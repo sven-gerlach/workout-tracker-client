@@ -24,12 +24,12 @@ function onSignUp (event) {
         })
       })
     })
-    .then(() => {
-      // insert pswd and email into sign-in form and then click sign-in button
-      $('#sign-in-form input:first-child').val(formData.credentials.email)
-      $('#sign-in-form input:nth-child(2)').val(formData.credentials.password)
-      $('#sign-in-form button').click()
-    })
+    // .then(() => {
+    //   // insert pswd and email into sign-in form and then click sign-in button
+    //   $('#sign-in-form input:first-child').val(formData.credentials.email)
+    //   $('#sign-in-form input:nth-child(2)').val(formData.credentials.password)
+    //   $('#sign-in-form button').click()
+    // })
     .catch(response => {
       console.log(response)
 
@@ -159,6 +159,7 @@ function onExerciseSelection (event) {
       .then(response => {
         ui.showSetFrame()
         store.workout.exercise.push(response.exercise)
+        // todo: the search form is still populated after returning to the exercise selection page from the set page
         ui.clearForm(event.originalEvent.originalTarget.id)
       })
       .catch(console.error)
