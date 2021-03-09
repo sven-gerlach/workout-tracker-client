@@ -142,9 +142,7 @@ function updateExerciseList () {
 }
 
 function populateExerciseTitleSelector (exercises) {
-  console.log(exercises)
   let optionsString = (exercises.size === 0) ? '<option value="" disabled selected>select exercise...</option>option>' : ''
-  console.log(optionsString)
   exercises.forEach(exercise => {
     optionsString += `<option value="${exercise}">${exercise}</option>`
   })
@@ -203,7 +201,6 @@ function populateWorkoutTable () {
 }
 
 function postWorkoutCleanUp () {
-  console.log('post workout clean up invoked')
   showHomeFrame()
   // reset the set counter to 1
   $('#set-frame h4').text('Set 1')
@@ -212,8 +209,8 @@ function postWorkoutCleanUp () {
   // if current workout's exercise array is empty, delete the workout from the db
   if (store.workout.exercise.length === 0) {
     api.deleteWorkout(store.workout._id)
-      .then(console.log)
-      .catch(console.error)
+      .then()
+      .catch()
   }
 
   // delete workout from local storage

@@ -13,8 +13,6 @@ function onSignUp (event) {
   const formData = getFormFields(event.target)
   api.signUp(formData)
     .then(() => {
-      // delete formData.credentials.password_confirmation
-      // console.log(formData)
       return api.signIn(formData)
     })
     .then(data => {
@@ -46,8 +44,6 @@ function onSignUp (event) {
       })
     })
     .catch(response => {
-      console.log(response)
-
       // Launch modal to alert user to the error
       if (response.responseJSON.name === 'BadParamsError') {
         const title = 'Incorrect Password'
@@ -103,7 +99,6 @@ function onSignIn (event) {
 function onSignOut () {
   api.signOut()
     .then(response => {
-      console.log(response)
       for (const key in store) {
         delete store[key]
       }
@@ -124,8 +119,7 @@ function onChangePassword (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changePassword(data)
-    .then(response => {
-      console.log(response)
+    .then(() => {
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
@@ -261,13 +255,11 @@ function setupPersonalSettingsFrame (event) {
 function onUpdatePersonalSettings (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
 
   // make ajax call to update db
   api.updatePersonalSettings(data)
     .then(response => {
       ui.clearForm(event.delegateTarget.id)
-      console.log(response)
       store.user = response.user
       ui.updatePersonalSettingsFormPlaceholders()
     })
