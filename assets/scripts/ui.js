@@ -3,6 +3,8 @@
 const store = require('./store')
 const moment = require('moment')
 const api = require('./api')
+const dbSearch = require('./db_search')
+const events = require('./events')
 
 function hideAllFrames () {
   $('#welcome-frame').hide()
@@ -115,6 +117,19 @@ function updatePersonalSettingsFormPlaceholders () {
   $('#experience').val(store.user.experience || '')
 }
 
+function updateExerciseSelectionBox () {
+  // make api call
+  events.getAllWorkouts()
+    .then(() => {
+      // get all previously used exercise titles and store them
+      store.exerciseNames = dbSearch.getUsedExerciseNames()
+
+      // populate exercise selector with all previously used exercises
+      populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
+    })
+    .catch(console.error)
+}
+
 // 4) for every key stroke, check if that string is in the exercise list and add all matching exercises to a scroll list
 // 5) If user clicks on an item in scroll list it populates the next exercise box
 function updateExerciseList () {
@@ -126,7 +141,9 @@ function updateExerciseList () {
 }
 
 function populateExerciseTitleSelector (exercises) {
-  let optionsString = ''
+  console.log(exercises)
+  let optionsString = (exercises.size === 0) ? '<option value="" disabled selected>select exercise...</option>option>' : ''
+  console.log(optionsString)
   exercises.forEach(exercise => {
     optionsString += `<option value="${exercise}">${exercise}</option>`
   })
@@ -238,7 +255,7 @@ function toggleExerciseSearchBar () {
   $('#search-exercise-text-box').toggle('fast')
 }
 
-module.exports = {
+Object.assign(module.exports, {
   showWelcomeFrame,
   showSignUpFrame,
   showSignInFrame,
@@ -251,6 +268,7 @@ module.exports = {
   showSetFrame,
   showPersonalSettingsFrame,
   clearForm,
+  updateExerciseSelectionBox,
   updatePersonalSettingsFormPlaceholders,
   updateExerciseList,
   populateExerciseTitleSelector,
@@ -261,4 +279,4 @@ module.exports = {
   showExitWorkoutModal,
   toggleNavBarListItems,
   toggleExerciseSearchBar
-}
+})

@@ -56,7 +56,7 @@ function onSignIn (event) {
       store.user = data.user
 
       // get all previous workouts and store them locally
-      _getAllWorkouts()
+      getAllWorkouts()
 
       // update the personal settings form placeholders with the downloaded user data
       ui.updatePersonalSettingsFormPlaceholders()
@@ -124,10 +124,8 @@ function onSetUpWorkout () {
       ui.showExerciseSelectionFrame()
 
       // get all previously used exercise titles and store them
-      store.exerciseNames = dbSearch.getUsedExerciseNames()
-
       // populate exercise selector with all previously used exercises
-      ui.populateExerciseTitleSelector(new Set(store.exerciseNames.sort()))
+      ui.updateExerciseSelectionBox()
     })
     .catch(console.error)
 }
@@ -179,8 +177,9 @@ function onSetEntry (event) {
         $('#set-frame div:first-of-type').text(`Set ${nextSetNumber}`)
       }
       if (buttonText === 'New Exercise') {
-        ui.showExerciseSelectionFrame()
+        ui.updateExerciseSelectionBox()
         $('#set-frame > p').text('Set 1')
+        ui.showExerciseSelectionFrame()
       }
       if (buttonText === 'Stop Workout') {
         ui.showExitWorkoutModal('Have You Finished Your Workout?', 'Please press "Confirm" to save your workout.')
@@ -228,7 +227,7 @@ function onStatsButtonClick (event) {
 
 function onWorkoutHistoryButtonCLick (event) {
   ui.showWorkoutHistoryFrame(event)
-  _getAllWorkouts()
+  getAllWorkouts()
     .then(() => {
       ui.populateWorkoutTable()
     })
@@ -239,7 +238,7 @@ function onShowGraph (event) {
   let exercises
 
   // get all previous workouts and store them locally
-  _getAllWorkouts()
+  getAllWorkouts()
     .then(() => {
       // grab selected exercise and pass it to a function to get all sets of this exercise
       let title
@@ -266,24 +265,31 @@ function onShowGraph (event) {
 
 function onDeleteWorkout (event) {
   event.preventDefault()
-  // Need to make sure the right parent object is selected regardless of whether user clicks on
-  // the cross in the center or on the circle around it
-  const workoutId = $(event.target).parent('tr').data().workoutId
-  ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
-  $('#confirm-delete-button').on('click', () => {
-    api.deleteWorkout(workoutId)
-      .then(() => {
-        return _getAllWorkouts()
-      })
-      .then(() => {
-        ui.populateWorkoutTable()
-        _deleteEventListeners()
-      })
-      .catch(() => {
-        _deleteEventListeners()
-      })
-  })
-  $('#cancel-delete-button').on('click', _deleteEventListeners)
+  // check if user clicked on the table header
+  if (event.target.tagName === 'TH') {
+    // if user clicked on the table header
+    const title = 'Pleas Select a Table Row'
+    const body = 'Only rows and their associated workouts can be selected for deletion.'
+    ui.showUserModal(title, body)
+  } else {
+    // if user did not click on the table header
+    const workoutId = $(event.target).parent('tr').data().workoutId
+    ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
+    $('#confirm-delete-button').on('click', () => {
+      api.deleteWorkout(workoutId)
+        .then(() => {
+          return getAllWorkouts()
+        })
+        .then(() => {
+          ui.populateWorkoutTable()
+          _deleteEventListeners()
+        })
+        .catch(() => {
+          _deleteEventListeners()
+        })
+    })
+    $('#cancel-delete-button').on('click', _deleteEventListeners)
+  }
 
   function _deleteEventListeners () {
     $('#confirm-delete-button').off()
@@ -291,7 +297,7 @@ function onDeleteWorkout (event) {
   }
 }
 
-function _getAllWorkouts () {
+function getAllWorkouts () {
   // get all previous workouts and store them locally
   return api.getAllWorkouts()
     .then(response => {
@@ -301,7 +307,7 @@ function _getAllWorkouts () {
     .catch(console.error)
 }
 
-module.exports = {
+Object.assign(module.exports, {
   onSignUp,
   onSignIn,
   onSignOut,
@@ -315,5 +321,6 @@ module.exports = {
   onStatsButtonClick,
   onWorkoutHistoryButtonCLick,
   onShowGraph,
-  onDeleteWorkout
-}
+  onDeleteWorkout,
+  getAllWorkouts
+})
