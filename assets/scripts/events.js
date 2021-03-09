@@ -168,27 +168,42 @@ function onSetEntry (event) {
   const data = getFormFields(event.target)
   api.createSet(workoutId, exerciseId, data)
     .then(response => {
-      ui.clearForm(event.delegateTarget.id)
       const currentExercise = store.workout.exercise[store.workout.exercise.length - 1]
       currentExercise.sets.push(response.set)
       const buttonText = event.originalEvent.submitter.value
-      if (buttonText === 'Next Set') {
+      if (buttonText === 'New Set') {
+        ui.clearForm(event.delegateTarget.id)
         const nextSetNumber = currentExercise.sets.length + 1
-        $('#set-frame div:first-of-type').text(`Set ${nextSetNumber}`)
+        $('#set-frame h4').text(`Set ${nextSetNumber}`)
       }
-      if (buttonText === 'New Exercise') {
+      if (buttonText === 'Go Back') {
+        ui.clearForm(event.delegateTarget.id)
         ui.updateExerciseSelectionBox()
-        $('#set-frame > p').text('Set 1')
+        $('#set-frame h4').text('Set 1')
         ui.showExerciseSelectionFrame()
       }
-      if (buttonText === 'Stop Workout') {
-        ui.showExitWorkoutModal('Have You Finished Your Workout?', 'Please press "Confirm" to save your workout.')
-
-        // todo: if Confirm button is pressed invoke postWorkoutCleanup; otherwise do nothing
-        ui.postWorkoutCleanUp()
-      }
+    })
+    .then(() => {
+      $('#confirm-exit-button').off()
     })
     .catch(console.error)
+}
+
+function onEndWorkout () {
+  const title = 'Please Confirm'
+  const body = 'Please click "Confirm" to end this workout.'
+  ui.showExitWorkoutModal(title, body)
+  $('#confirm-exit-button').on('click', () => {
+    ui.postWorkoutCleanUp()
+    _deleteEventListeners()
+  })
+  $('#cancel-exit-button').on('click', () => {
+    _deleteEventListeners()
+  })
+  function _deleteEventListeners () {
+    $('#confirm-exit-button').off()
+    $('#cancel-exit-button').off()
+  }
 }
 
 function setupPersonalSettingsFrame (event) {
@@ -315,6 +330,7 @@ Object.assign(module.exports, {
   onSetUpWorkout,
   onExerciseSelection,
   onSetEntry,
+  onEndWorkout,
   setupPersonalSettingsFrame,
   onUpdatePersonalSettings,
   onAddExerciseToWorkouts,

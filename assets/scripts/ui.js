@@ -202,12 +202,13 @@ function populateWorkoutTable () {
 }
 
 function postWorkoutCleanUp () {
+  console.log('post workout clean up invoked')
   showHomeFrame()
   // reset the set counter to 1
-  $('#set-frame > p').text('Set 1')
+  $('#set-frame h4').text('Set 1')
   $('form').trigger('reset')
 
-  // if current workout's exercise array is empty delete the workout from the db
+  // if current workout's exercise array is empty, delete the workout from the db
   if (store.workout.exercise.length === 0) {
     api.deleteWorkout(store.workout._id)
       .then(console.log)

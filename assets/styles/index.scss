@@ -216,6 +216,11 @@ body {
   max-width: 700px;
   width: 70%;
 
+  #end-workout-button:hover {
+    background-color: rgba(197,67,67,0.8);
+    transition: background-color 2s;
+  }
+
   div:not(:last-of-type) {
     select {
       background-color: rgba(240, 248, 255, 0.8);

@@ -170,6 +170,7 @@
         </section>
         <section id="exercise-selection-frame">
           <form id="exercise-selection-form">
+            <h4>Exercise Selection</h4>
             <div>
               <select id="used-exercise-titles" class="used-exercise-titles select" name="exercise[title]">
                 <!-- placeholder for dynamically inserted <option> tags -->
@@ -190,13 +191,15 @@
             </div>
             <div>
               <input class="button" type="submit" value="Start First Set">
-              <button type="button" class="reset-workout-frames button">Stop Workout</button>
+              <button type="button" id="end-workout-button" class="button">Stop Workout</button>
             </div>
           </form>
         </section>
         <section id="set-frame">
           <form id="set-form">
-            <div>Set 1</div>
+            <div>
+              <h4>Set 1</h4>
+            </div>
             <div>
               <label for="weight-input">Weight:</label>
               <input type="number" id="weight-input" min="0" name="set[weight]" required>
@@ -206,12 +209,8 @@
               <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
             </div>
             <div>
-              <input class="button" type="submit" value="Next Set">
-              <input class="button" type="submit" value="New Exercise">
-            </div>
-            <div>
-              <!-- Add modal to warn user this will finish and save the workout -->
-              <input class="button" type="submit" value="Stop Workout">
+              <input class="button" type="submit" value="New Set">
+              <input class="button" type="submit" value="Go Back">
             </div>
           </form>
         </section>
