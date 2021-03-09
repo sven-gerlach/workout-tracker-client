@@ -5,6 +5,9 @@ const events = require('./events')
 // hiding all frames
 ui.showWelcomeFrame()
 
+// todo: add spinner
+// todo: banner after sign-up appears on sign-up screen...better to load main screen first and then show banner
+
 $(() => {
   $('.go-to-welcome-frame').on('click', ui.showWelcomeFrame)
   $('#sign-in-button').on('click', ui.showSignInFrame)
