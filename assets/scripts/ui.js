@@ -246,6 +246,15 @@ function showExitWorkoutModal (title, body) {
   })
 }
 
+function showContinueSetModal (title, body) {
+  $('#continue-set-title').text(title)
+  $('#continue-set-body').text(body)
+  $('#continue-set-modal').modal({
+    backdrop: 'static',
+    show: true
+  })
+}
+
 function toggleNavBarListItems (highlightListItem) {
   // get all list items and remove the 'active' class
   $('#nav-bar-frame li').removeClass('active')
@@ -278,6 +287,7 @@ Object.assign(module.exports, {
   showUserModal,
   showWarningModal,
   showExitWorkoutModal,
+  showContinueSetModal,
   toggleNavBarListItems,
   toggleExerciseSearchBar
 })

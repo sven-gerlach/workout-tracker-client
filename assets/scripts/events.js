@@ -170,17 +170,30 @@ function onSetEntry (event) {
     .then(response => {
       const currentExercise = store.workout.exercise[store.workout.exercise.length - 1]
       currentExercise.sets.push(response.set)
-      const buttonText = event.originalEvent.submitter.value
-      if (buttonText === 'New Set') {
+      return currentExercise
+    })
+    .then((currentExercise) => {
+      // open modal
+      const title = 'Please Choose...'
+      const body = 'You can start a new set or return to the exercise selection menu.'
+      ui.showContinueSetModal(title, body)
+
+      // attach event listeners
+      $('#continue-set-button').on('click', () => {
+        _removeEventListeners()
         ui.clearForm(event.delegateTarget.id)
         const nextSetNumber = currentExercise.sets.length + 1
         $('#set-frame h4').text(`Set ${nextSetNumber}`)
-      }
-      if (buttonText === 'Go Back') {
+      })
+      $('#return-to-exercise-button').on('click', () => {
         ui.clearForm(event.delegateTarget.id)
         ui.updateExerciseSelectionBox()
         $('#set-frame h4').text('Set 1')
         ui.showExerciseSelectionFrame()
+      })
+      function _removeEventListeners () {
+        $('#continue-set-button').off()
+        $('#return-to-exercise-button').off()
       }
     })
     .then(() => {

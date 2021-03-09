@@ -118,7 +118,8 @@ body {
   align-items: center;
   div button {
     font-size: 1.25rem;
-    height: 30px;
+    height: 40px;
+    width: 300px;
   }
 }
 
@@ -350,16 +351,10 @@ body {
   }
 
   div:nth-of-type(4) {
-    display: flex;
-    justify-content: space-between;
+    margin-top: 20px;
     input {
       min-width: 100px;
     }
-  }
-
-  div:last-of-type {
-    margin-top: 100px;
-    align-self: center;
   }
 }
 

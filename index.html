@@ -94,7 +94,7 @@
         </section>
         <section id="home-frame">
           <div>
-            <button id="setup-workout-button" class="button">Setup New Workout</button>
+            <button id="setup-workout-button" class="button">New Workout</button>
           </div>
         </section>
         <section id="graph-frame">
@@ -205,12 +205,11 @@
               <input type="number" id="weight-input" min="0" name="set[weight]" required>
             </div>
             <div>
-              <label for="rep-input">Reps:</label>
+              <label for="rep-input">Repetitions:</label>
               <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
             </div>
             <div>
-              <input class="button" type="submit" value="New Set">
-              <input class="button" type="submit" value="Go Back">
+              <input class="button" type="submit" value="Save">
             </div>
           </form>
         </section>
@@ -254,6 +253,21 @@
               <div class="modal-footer">
                 <button id="cancel-exit-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button id="confirm-exit-button" type="button" class="btn btn-danger" data-dismiss="modal">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- continue set modal -->
+        <div class="modal fade" id="continue-set-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="continue-set-title"></h5>
+              </div>
+              <div class="modal-body" id="continue-set-body"></div>
+              <div class="modal-footer">
+                <button id="continue-set-button" type="button" class="btn btn-secondary" data-dismiss="modal">New Set</button>
+                <button id="return-to-exercise-button" type="button" class="btn btn-danger" data-dismiss="modal">Return</button>
               </div>
             </div>
           </div>
