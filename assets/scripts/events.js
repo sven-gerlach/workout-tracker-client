@@ -142,7 +142,6 @@ function onChangePassword (event) {
 
 function onDeleteAccount (event) {
   event.preventDefault()
-  console.log('success')
   // show modal that warns the user that the deletion is irreversible
   const title = 'Deletion is Irreversible!'
   const body = 'Please confirm you would like to delete your account irreversibly.'
