@@ -10,21 +10,25 @@ function onSignUp (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
   api.signUp(formData)
-    .then(response => {
-      console.log(response)
+    .then(() => {
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
 
-      // insert pswd and email into sign-in form and then click sign-in button
-      $('#sign-in-form input:first-child').val(formData.credentials.email)
-      $('#sign-in-form input:nth-child(2)').val(formData.credentials.password)
-      $('#sign-in-form button').click()
-    })
-    .then(() => {
       // launch welcome modal
       const title = 'Welcome to ProLoad!'
       const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
       ui.showUserModal(title, body)
+      return new Promise((resolve, reject) => {
+        $('#acknowledge-button').on('click', () => {
+          resolve()
+        })
+      })
+    })
+    .then(() => {
+      // insert pswd and email into sign-in form and then click sign-in button
+      $('#sign-in-form input:first-child').val(formData.credentials.email)
+      $('#sign-in-form input:nth-child(2)').val(formData.credentials.password)
+      $('#sign-in-form button').click()
     })
     .catch(response => {
       console.log(response)
