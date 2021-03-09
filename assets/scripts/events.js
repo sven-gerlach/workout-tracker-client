@@ -120,6 +120,11 @@ function onChangePassword (event) {
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(() => {
+      // launch modal to confirm successful change of the user's password
+      const title = 'Success!'
+      const body = 'Your password has been changed successfully.'
+      ui.showUserModal(title, body)
+
       // send id of form element to a function that clears that form
       ui.clearForm(event.delegateTarget.id)
     })
@@ -259,6 +264,10 @@ function onUpdatePersonalSettings (event) {
   // make ajax call to update db
   api.updatePersonalSettings(data)
     .then(response => {
+      // launch welcome modal
+      const title = 'Success!'
+      const body = 'Your personal details have been updated.'
+      ui.showUserModal(title, body)
       ui.clearForm(event.delegateTarget.id)
       store.user = response.user
       ui.updatePersonalSettingsFormPlaceholders()
