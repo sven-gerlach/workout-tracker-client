@@ -195,15 +195,24 @@
           </form>
         </section>
         <section id="set-frame">
-          <p>Set 1</p>
           <form id="set-form">
-            <label for="weight-input">Weight:</label>
-            <input type="number" id="weight-input" min="0" name="set[weight]" required>
-            <label for="rep-input">Reps:</label>
-            <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
-            <input type="submit" value="Next Set">
-            <input type="submit" value="New Exercise">
-            <input type="submit" value="I'm Spent!">
+            <div>Set 1</div>
+            <div>
+              <label for="weight-input">Weight:</label>
+              <input type="number" id="weight-input" min="0" name="set[weight]" required>
+            </div>
+            <div>
+              <label for="rep-input">Reps:</label>
+              <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
+            </div>
+            <div>
+              <input class="button" type="submit" value="Next Set">
+              <input class="button" type="submit" value="New Exercise">
+            </div>
+            <div>
+              <!-- Add modal to warn user this will finish and save the workout -->
+              <input class="button" type="submit" value="Stop Workout">
+            </div>
           </form>
         </section>
         <!-- Modal for user success / error messaging -->
@@ -220,7 +229,7 @@
             </div>
           </div>
         </div>
-        <!-- Modal for user warnings -->
+        <!-- Modal for deleting workouts -->
         <div class="modal fade" id="warning-message-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -231,6 +240,21 @@
               <div class="modal-footer">
                 <button id="cancel-delete-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button id="confirm-delete-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for exiting an active workout -->
+        <div class="modal fade" id="exit-workout-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exit-workout-title"></h5>
+              </div>
+              <div class="modal-body" id="exit-workout-body"></div>
+              <div class="modal-footer">
+                <button id="cancel-exit-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-exit-button" type="button" class="btn btn-danger" data-dismiss="modal">Confirm</button>
               </div>
             </div>
           </div>

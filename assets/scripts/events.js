@@ -6,7 +6,6 @@ const ui = require('./ui')
 const dbSearch = require('./db_search')
 const graphData = require('./graph_data')
 
-// todo: add auto-sign in feature
 function onSignUp (event) {
   event.preventDefault()
   const formData = getFormFields(event.target)
@@ -177,13 +176,16 @@ function onSetEntry (event) {
       const buttonText = event.originalEvent.submitter.value
       if (buttonText === 'Next Set') {
         const nextSetNumber = currentExercise.sets.length + 1
-        $('#set-frame > p').text(`Set ${nextSetNumber}`)
+        $('#set-frame div:first-of-type').text(`Set ${nextSetNumber}`)
       }
       if (buttonText === 'New Exercise') {
         ui.showExerciseSelectionFrame()
         $('#set-frame > p').text('Set 1')
       }
-      if (buttonText === 'I\'m Spent!') {
+      if (buttonText === 'Stop Workout') {
+        ui.showExitWorkoutModal('Have You Finished Your Workout?', 'Please press "Confirm" to save your workout.')
+
+        // todo: if Confirm button is pressed invoke postWorkoutCleanup; otherwise do nothing
         ui.postWorkoutCleanUp()
       }
     })
@@ -266,7 +268,7 @@ function onDeleteWorkout (event) {
   event.preventDefault()
   // Need to make sure the right parent object is selected regardless of whether user clicks on
   // the cross in the center or on the circle around it
-  const workoutId = $(event.target.parentElement).data().workoutId || $(event.target).data().workoutId
+  const workoutId = $(event.target).parent('tr').data().workoutId
   ui.showWarningModal('Irreversible Request', 'Please confirm the irreversible removal of this workout.')
   $('#confirm-delete-button').on('click', () => {
     api.deleteWorkout(workoutId)

@@ -19,16 +19,16 @@ body {
   color: aliceblue;
   border: aliceblue 1px solid;
   border-radius: 30px;
-  height: 22px;
+  height: 30px;
 }
 
 .select {
   background-color: rgba(240, 248, 255, 0.8);
   border-radius: 5px;
-  padding: 0 5px;
+  padding: 0 10px;
   border: none;
   min-width: 80px;
-  height: 22px;
+  height: 30px;
 }
 
 #welcome-frame {
@@ -83,8 +83,8 @@ body {
         background-color: rgba(240,248,255, 0.8);
         border-radius: 5px;
         border: none;
-        padding: 0 5px;
-        height: 22px;
+        padding: 0 10px;
+        height: 30px;
       }
     }
     div:last-of-type {
@@ -156,6 +156,7 @@ body {
     }
 
     table {
+      cursor: help;
       text-align: center;
       margin: 15px auto 0px auto;
       color: rgba(240, 248, 255, 1);
@@ -185,8 +186,8 @@ body {
       background-color: rgba(240, 248, 255, 0.8);
       border-radius: 5px;
       border: none;
-      padding: 0 5px;
-      height: 22px;
+      padding: 0 10px;
+      height: 30px;
     }
     select {
       text-align: left;
@@ -219,8 +220,8 @@ body {
     background-color: rgba(240, 248, 255, 0.8);
     border-radius: 5px;
     border: none;
-    padding: 0 5px;
-    height: 22px;
+    padding: 0 10px;
+    height: 30px;
   }
 
   div {
@@ -297,6 +298,51 @@ body {
     input {
       min-width: 150px;
     }
+  }
+}
+
+// Set frame
+#set-frame form {
+  margin: 30px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 70%;
+
+  div {
+    margin-top: 15px;
+    flex: 1 1;
+  }
+
+  div:first-of-type {
+    align-self: center;
+  }
+
+  div:nth-of-type(2),
+  div:nth-of-type(3){
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    input {
+      background-color: rgba(240, 248, 255, 0.8);
+      border-radius: 5px;
+      padding: 0 10px;
+      border: none;
+      height: 30px;
+    }
+  }
+
+  div:nth-of-type(4) {
+    display: flex;
+    justify-content: space-between;
+    input {
+      min-width: 100px;
+    }
+  }
+
+  div:last-of-type {
+    margin-top: 100px;
+    align-self: center;
   }
 }
 

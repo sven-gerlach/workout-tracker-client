@@ -142,7 +142,6 @@ function populateWorkoutTable () {
         <th scope="col">#</th>
         <th scope="col">Date</th>
         <th scope="col">Duration(min)</th>
-        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -155,11 +154,10 @@ function populateWorkoutTable () {
       const duration = _getDuration(workout.createdAt, workout.updatedAt)
       const id = workout._id
       const tableRowHtml = `
-        <tr>
+        <tr data-workout-id="${id}">
           <th scope="row">${counter++}</th>
           <td>${date}</td>
           <td>${duration}</td>
-          <td><button type="button" class="button" data-workout-id="${id}"><span aria-hidden="true">&times;</span></button></td>
         </tr>
       `
       tableHtml += tableRowHtml
@@ -221,6 +219,15 @@ function showWarningModal (title, body) {
   })
 }
 
+function showExitWorkoutModal (title, body) {
+  $('#exit-workout-title').text(title)
+  $('#exit-workout-body').text(body)
+  $('#exit-workout-modal').modal({
+    backdrop: 'static',
+    show: true
+  })
+}
+
 function toggleNavBarListItems (highlightListItem) {
   // get all list items and remove the 'active' class
   $('#nav-bar-frame li').removeClass('active')
@@ -251,6 +258,7 @@ module.exports = {
   populateWorkoutTable,
   showUserModal,
   showWarningModal,
+  showExitWorkoutModal,
   toggleNavBarListItems,
   toggleExerciseSearchBar
 }
