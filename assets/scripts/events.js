@@ -8,63 +8,69 @@ const graphData = require('./graph_data')
 
 function onSignUp (event) {
   event.preventDefault()
+  // start spinner
+  const spinner = ui.invokeSpinner().spin($('html')[0])
   const formData = getFormFields(event.target)
   api.signUp(formData)
     .then(() => {
       // delete formData.credentials.password_confirmation
       // console.log(formData)
       return api.signIn(formData)
-        .then(data => {
-          ui.showHomeFrame()
+    })
+    .then(data => {
+      // stop spinner
+      spinner.stop()
+      ui.showHomeFrame()
 
-          // store user data and all historic workout data locally
-          store.user = data.user
+      // store user data and all historic workout data locally
+      store.user = data.user
 
-          // get all previous workouts and store them locally
-          getAllWorkouts()
+      // get all previous workouts and store them locally
+      getAllWorkouts()
 
-          // update the personal settings form placeholders with the downloaded user data
-          ui.updatePersonalSettingsFormPlaceholders()
+      // update the personal settings form placeholders with the downloaded user data
+      ui.updatePersonalSettingsFormPlaceholders()
+    })
+    .then(() => {
+      // send id of form element to a function that clears that form
+      ui.clearForm(event.delegateTarget.id)
+
+      // launch welcome modal
+      const title = 'Welcome to ProLoad!'
+      const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
+      ui.showUserModal(title, body)
+      return new Promise((resolve, reject) => {
+        $('#acknowledge-button').on('click', () => {
+          resolve()
         })
-        .then(() => {
-          // send id of form element to a function that clears that form
-          ui.clearForm(event.delegateTarget.id)
+      })
+    })
+    .catch(response => {
+      console.log(response)
 
-          // launch welcome modal
-          const title = 'Welcome to ProLoad!'
-          const body = 'We hope you will be enjoying this app and that it helps you achieve that ephemeral "Progressive Overload" in your training.'
-          ui.showUserModal(title, body)
-          return new Promise((resolve, reject) => {
-            $('#acknowledge-button').on('click', () => {
-              resolve()
-            })
-          })
-        })
-        .catch(response => {
-          console.log(response)
+      // Launch modal to alert user to the error
+      if (response.responseJSON.name === 'BadParamsError') {
+        const title = 'Incorrect Password'
+        const body = 'It seems the two passwords do not match. Please try again.'
+        ui.showUserModal(title, body)
+      } else {
+        const title = 'E-Mail Already Exists'
+        const body = 'A user with that email seems to exist already. Please use a different e-mail address.'
+        ui.showUserModal(title, body)
+      }
 
-          // Launch modal to alert user to the error
-          if (response.responseJSON.name === 'BadParamsError') {
-            const title = 'Incorrect Password'
-            const body = 'It seems the two passwords do not match. Please try again.'
-            ui.showUserModal(title, body)
-          } else {
-            const title = 'E-Mail Already Exists'
-            const body = 'A user with that email seems to exist already. Please use a different e-mail address.'
-            ui.showUserModal(title, body)
-          }
-
-          // send id of form element to a function that clears that form
-          ui.clearForm(event.delegateTarget.id)
-        })
+      // send id of form element to a function that clears that form
+      ui.clearForm(event.delegateTarget.id)
     })
 }
 
 function onSignIn (event) {
   event.preventDefault()
+  const spinner = ui.invokeSpinner().spin($('html')[0])
   const formData = getFormFields(event.target)
   api.signIn(formData)
     .then(data => {
+      spinner.stop()
       ui.showHomeFrame()
 
       // store user data and all historic workout data locally
@@ -101,6 +107,14 @@ function onSignOut () {
       for (const key in store) {
         delete store[key]
       }
+      // trigger rest of all forms
+      $('form').trigger('reset')
+
+      // collapse navbar
+      $('header nav button').addClass('collapsed')
+      $('header nav div').removeClass('show')
+
+      // show welcome frame
       ui.showWelcomeFrame()
     })
     .catch(console.error)
