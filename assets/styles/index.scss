@@ -21,6 +21,13 @@ body {
   border: aliceblue 1px solid;
   border-radius: 30px;
   height: 30px;
+  &:hover {
+    background-color: rgba(183, 182, 187, 0.8);
+    transition: background-color 500ms;
+  }
+  &:active {
+    background-color: rgb(183, 182, 187);
+  }
 }
 
 .select {
@@ -107,9 +114,15 @@ body {
 }
 
 // Navbar
-.navbar-brand:hover {
-  cursor: default;
+#nav-bar-frame {
+  .navbar-brand:hover {
+    cursor: default;
+  }
+  a:active {
+    background-color: rgba(183, 182, 187, 0.8);
+  }
 }
+
 
 // Home frame
 #home-frame {
@@ -216,7 +229,7 @@ body {
     width: 140px;
     &:hover {
       background-color: rgba(197,67,67,0.8);
-      transition: background-color 1s;
+      transition: background-color 500ms;
     }
   }
 }
@@ -241,7 +254,7 @@ body {
 
   #end-workout-button:hover {
     background-color: rgba(197,67,67,0.8);
-    transition: background-color 1s;
+    transition: background-color 500ms;
   }
 
   div:not(:last-of-type) {
