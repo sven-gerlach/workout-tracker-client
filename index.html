@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>ProLoad</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <header id="nav-bar-frame">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">ProLoad</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a id="home-frame-button" class="nav-link" href="#">Home</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  History
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a id="stats-button" class="dropdown-item" href="#">Statistics</a>
+                  <a id="workout-history-button" class="dropdown-item" href="#">Workouts</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a id="personal-settings-button" class="dropdown-item" href="#">About Me</a>
+                  <a id="global-settings-button" class="dropdown-item" href="#">Settings</a>
+                  <a id="security-button" class="dropdown-item" href="#">Account</a>
+                  <div class="dropdown-divider"></div>
+                  <a id="sign-out-button" class="dropdown-item" href="#">Sign Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <body>
+        <section id="welcome-frame">
+          <div>
+            <h1>ProLoad</h1>
+            <h3>"There are no shortcuts"</h3>
+          </div>
+          <div>
+            <button id="sign-in-button" class="button">Sign In</button>
+            <button id="sign-up-button" class="button">Sign Up</button>
+          </div>
+        </section>
+        <section id="sign-up-frame">
+          <div>
+            <h1>ProLoad</h1>
+            <h3>"There are no shortcuts"</h3>
+          </div>
+          <form id="sign-up-form">
+            <div>
+              <input type="email" name="credentials[email]" placeholder="e-Mail" required>
+              <input type="password" name="credentials[password]" placeholder="password" required>
+              <input type="password" name="credentials[password_confirmation]" placeholder="confirm password" required>
+            </div>
+            <div>
+              <input type="submit" value="Sign-Up" class="button">
+              <button type="button" class="go-to-welcome-frame button">Back</button>
+            </div>
+          </form>
+        </section>
+        <section id="sign-in-frame">
+          <div>
+            <h1>ProLoad</h1>
+            <h3>"There are no shortcuts"</h3>
+          </div>
+          <form id="sign-in-form">
+            <div>
+              <input type="email" name="credentials[email]" placeholder="e-Mail" required>
+              <input type="password" name="credentials[password]" placeholder="password" required>
+            </div>
+            <div>
+              <input type="submit" value="Sign-In" class="button">
+              <button type="button" class="go-to-welcome-frame button">Back</button>
+            </div>
+          </form>
+        </section>
+        <section id="home-frame">
+          <div>
+            <button id="setup-workout-button" class="button">New Workout</button>
+          </div>
+        </section>
+        <section id="graph-frame">
+          <div>
+            <select id="used-exercise-titles-stats" class="used-exercise-titles select" name="exercise[title]">
+              <!-- placeholder for dynamically inserted <option> tags [all the user's exercises stored in the database] -->
+            </select>
+            <canvas id="exercise-volume-chart"></canvas>
+          </div>
+        </section>
+        <section id="workout-history-frame">
+          <div>
+            <label for="number-of-workouts">Most recent:</label>
+            <select id="number-of-workouts" class="select">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="40">40</option>
+              <option value="all">All</option>
+            </select>
+            <table class="table table-hover table-sm table-striped table-dark" id="workout-history-table">
+              <!-- placeholder for dynamically inserted table content -->
+            </table>
+          </div>
+        </section>
+        <section id="security-frame">
+          <form id="change-pw-form">
+            <h4>Change Password</h4>
+            <div>
+              <input type="password" name="passwords[old]" placeholder="old password" required>
+            </div>
+            <div>
+              <input type="password" name="passwords[new]" placeholder="new password" required>
+            </div>
+            <div>
+              <input class="button" type="submit" value="Submit">
+            </div>
+          </form>
+          <form id="delete-account-form">
+            <h4>Delete Account</h4>
+            <div>
+              <input class="button" type="submit" value="Delete Account">
+            </div>
+          </form>
+        </section>
+        <section id="global-settings-frame">
+          <label for="weight-unit">Weight Unit:</label>
+          <select id="weight-unit" class="select">
+            <option value="lb">lb</option>
+            <option value="kg">kg</option>
+          </select>
+        </section>
+        <section id="personal-settings-frame">
+          <form id="personal-settings-form">
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="user[name]">
+            </div>
+            <div>
+              <label for="surname">Surname:</label>
+              <input type="text" id="surname" name="user[surname]">
+            </div>
+            <div>
+              <label for="age">Age:</label>
+              <input type="number" id="age" name="user[age]">
+            </div>
+            <div>
+              <label for="experience">Experience:</label>
+              <select class="select" id="experience" name="user[experience]">
+                <option value=""></option>
+                <option value="Rookie">Rookie</option>
+                <option value="Amateur">Amateur</option>
+                <option value="Experienced">Experienced</option>
+                <option value="Pro">Pro</option>
+              </select>
+            </div>
+            <div>
+              <input class="button" type="submit" value="Submit">
+            </div>
+          </form>
+        </section>
+        <section id="exercise-selection-frame">
+          <form id="exercise-selection-form">
+            <h4>Exercise Selection</h4>
+            <div>
+              <select id="used-exercise-titles" class="used-exercise-titles select" name="exercise[title]">
+                <!-- placeholder for dynamically inserted <option> tags -->
+              </select>
+            </div>
+            <div class="form-check">
+              <label class="container">
+                <input type="checkbox" id="search-exercise-checkbox">
+                <span class="checkmark"></span>Search or add exercise?
+              </label>
+            </div>
+            <div id="search-exercise-text-box">
+              <input id="search-for-exercise-names" type="text" placeholder="search / add exercise" autocomplete="off">
+              <button class="button" id="add-exercise-to-list" type="button">Add</button>
+            </div>
+            <div>
+              <input type="text" name="exercise[description]" placeholder="description (optional)">
+            </div>
+            <div>
+              <input class="button" type="submit" value="Start Set">
+              <button type="button" id="end-workout-button" class="button">Exit</button>
+            </div>
+          </form>
+        </section>
+        <section id="set-frame">
+          <form id="set-form">
+            <div>
+              <h4>Set 1</h4>
+            </div>
+            <div>
+              <label for="weight-input">Weight:</label>
+              <input type="number" id="weight-input" min="0" name="set[weight]" required>
+            </div>
+            <div>
+              <label for="rep-input">Repetitions:</label>
+              <input type="number" id="rep-input" min="0" name="set[repetitions]" required>
+            </div>
+            <div>
+              <input class="button" type="submit" value="Save">
+            </div>
+          </form>
+        </section>
+        <!-- Modal for user success / error messaging -->
+        <div class="modal fade" id="user-message-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="user-message-title"></h5>
+              </div>
+              <div class="modal-body" id="user-message-body"></div>
+              <div class="modal-footer">
+                <button id="acknowledge-button" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for deleting workouts -->
+        <div class="modal fade" id="warning-message-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="warning-message-title"></h5>
+              </div>
+              <div class="modal-body" id="warning-message-body"></div>
+              <div class="modal-footer">
+                <button id="cancel-delete-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-delete-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for exiting an active workout -->
+        <div class="modal fade" id="exit-workout-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exit-workout-title"></h5>
+              </div>
+              <div class="modal-body" id="exit-workout-body"></div>
+              <div class="modal-footer">
+                <button id="cancel-exit-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-exit-button" type="button" class="btn btn-danger" data-dismiss="modal">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- continue set modal -->
+        <div class="modal fade" id="continue-set-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="continue-set-title"></h5>
+              </div>
+              <div class="modal-body" id="continue-set-body"></div>
+              <div class="modal-footer">
+                <button id="continue-set-button" type="button" class="btn btn-secondary" data-dismiss="modal">New Set</button>
+                <button id="return-to-exercise-button" type="button" class="btn btn-danger" data-dismiss="modal">Return</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal for deleting user account -->
+        <div class="modal fade" id="delete-user-warning-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="delete-user-message-title"></h5>
+              </div>
+              <div class="modal-body" id="delete-user-message-body"></div>
+              <div class="modal-footer">
+                <button id="cancel-delete-user-button" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-delete-user-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </body>
+</html>
