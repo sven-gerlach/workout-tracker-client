@@ -15,9 +15,9 @@ Chart.plugins.register({
 
       ctx.save()
       ctx.textAlign = 'center'
-      ctx.textBaseline = 'middle'
-      ctx.font = '25px'
-      ctx.fillText('More than 2 data points are needed.', width / 2, height / 2)
+      ctx.textBaseline = 'top'
+      ctx.font = '1.2rem BlinkMacSystemFont'
+      ctx.fillText('At least 3 workouts of the same exercise are needed', width / 2, height / 8)
       ctx.restore()
     }
   }
