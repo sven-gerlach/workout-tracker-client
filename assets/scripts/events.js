@@ -345,7 +345,7 @@ function onShowGraph (event) {
       // grab selected exercise and pass it to a function to get all sets of this exercise
       let title
       if (event == null) {
-        title = $('used-exercise-titles-stats').val()
+        title = $('#used-exercise-titles-stats').val()
       } else {
         title = $(event.target).val()
       }

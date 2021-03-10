@@ -17,7 +17,7 @@ Chart.plugins.register({
       ctx.textAlign = 'center'
       ctx.textBaseline = 'top'
       ctx.font = '1.2rem BlinkMacSystemFont'
-      ctx.fillText('At least 3 workouts of the same exercise are needed', width / 2, height / 8)
+      ctx.fillText('At least two separate workouts are needed', width / 2, height / 8)
       ctx.restore()
     }
   }
