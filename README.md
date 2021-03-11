@@ -22,6 +22,7 @@ The frameworks and libraries used, include:
 + Chart.js
 + Lodash
 + Spin
++ Moment
 
 ## Hosted Applications
 ### Front-end
