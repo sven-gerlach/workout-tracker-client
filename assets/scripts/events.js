@@ -224,10 +224,9 @@ function onExerciseSelection (event) {
       .then(response => {
         ui.showSetFrame()
         store.workout.exercise.push(response.exercise)
-        // todo: the search form is still populated after returning to the exercise selection page from the set page
-        ui.clearForm(event.originalEvent.originalTarget.id)
+        ui.clearForm(event.target.id)
       })
-      .catch(console.error)
+      .catch()
   }
 }
 
