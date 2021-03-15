@@ -26,10 +26,10 @@ The frameworks and libraries used, include:
 
 ## Hosted Applications
 ### Front-end
-The front-end app is hosted on GitHub Pages and can be found [here](https://sven-gerlach.github.io/workout-tracker-client/). The front-end repo can be found [here](https://github.com/sven-gerlach/workout-tracker-client)
+The [front-end app](https://sven-gerlach.github.io/workout-tracker-client/) is hosted on GitHub Pages whilst the [front-end repository](https://github.com/sven-gerlach/workout-tracker-client) lives on GitHub.
 
 ### Back-end
-The back-end is hosted on Heroku and can be found [here](https://glacial-lowlands-84293.herokuapp.com/). The repository of the back-end can be found [here](https://github.com/sven-gerlach/workout-tracker)
+The [back-end API](https://glacial-lowlands-84293.herokuapp.com/) is hosted on Heroku whilst the [back-end repository](https://github.com/sven-gerlach/workout-tracker) can be found on GitHub.
 
 ## Wireframes
 ![ERD](public/wireframes.png)
