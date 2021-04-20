@@ -1,5 +1,33 @@
 # Project: ProLoad
 
+## Executive Summary
+- Free-weights work-out tracker
+- Allowing the user to record, save, and evaluate their weight training performance statically and serially
+- CRUDing on 4 resources: user, workout, exercise, and set
+- Custom-built back-end with 13 RESTful API routes
+- NoSQL Database setup includes sub-documents and 1-to-many resource relationships
+
+### Technologies Used on the Front- and Back-End
+Technology | Front-End | Back-End
+--- | :---: | :---:
+bcrypt | |x 
+Bootstrap | x
+Chart.js | x
+Cors | | x
+Express | | x
+HTML5 | x
+JavaScript | x | x
+jQuery | x
+Lodash | x | x
+Moment | x
+MongoDB | | x
+Mongoose | | x
+NodeJS | | x
+Passport | | x
+SCSS | x
+Spin | x
+
+
 ## Background
 I want to build a workout app that reduces the interaction with the interface during the workout session to an absolute minimum. Eventually, the interaction will be limited to the mobile device/fitness band/watch asking the wearer to confirm the weight used. All the other key data points, such as repetitions, exercise, duration, heart rate are collected and stored automatically. The key USP will be the AI-driven recognition of the exercise type and the repetitions. I believe this can be achieved with 4 spatially aware sensors, each attached to the extremities of the wearer.
 
@@ -10,12 +38,12 @@ Every fitness tracker I ever used failed to live up to the expectations because:
 1. Currently, available apps collect some data, but none actually offer much actionable
    advice on the back of that data
 
-## Front-End Application
+## Technologies Used
 This repo is the front-end of the project. It was written using:
 + JavaScript
 + HTML
 + CSS/SCSS
-  
+
 The frameworks and libraries used, include:
 + jQuery
 + Bootstrap
@@ -24,7 +52,7 @@ The frameworks and libraries used, include:
 + Spin
 + Moment
 
-## Hosted Applications
+## Links to Repos and Hosted Applications
 ### Front-end
 The [front-end app](https://sven-gerlach.github.io/workout-tracker-client/) is hosted on GitHub Pages whilst the [front-end repository](https://github.com/sven-gerlach/workout-tracker-client) lives on GitHub.
 
