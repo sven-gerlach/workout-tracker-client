@@ -31,4 +31,10 @@ $(() => {
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
   $('#search-exercise-checkbox').on('click', ui.toggleExerciseSearchBar)
+  $('#expedited-sign-up-modal').modal({
+    backdrop: 'static',
+    keyboard: false,
+    show: true
+  })
+  $('#confirm-expedited-sign-up-button').on('click', events.onExpeditedSignUp)
 })

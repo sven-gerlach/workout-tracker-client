@@ -6,11 +6,37 @@ const ui = require('./ui')
 const dbSearch = require('./db_search')
 const graphData = require('./graph_data')
 
+function onExpeditedSignUp (event) {
+  event.preventDefault()
+  // create a random email address and insert
+  const email = _randomStringGenerator(10) + '@random.com'
+  console.log(email)
+  // create a random password
+  const password = _randomStringGenerator(5)
+  console.log(password)
+  // insert email into sign-up form field
+  $('#sign-up-form input:nth-child(1)').val(email)
+  // insert password into sign-up form fields
+  $('#sign-up-form input:nth-child(2)').val(password)
+  $('#sign-up-form input:nth-child(3)').val(password)
+  $('#sign-up-form input[type=submit]').click()
+
+  function _randomStringGenerator (length) {
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length))
+    }
+    return result
+  }
+}
+
 function onSignUp (event) {
   event.preventDefault()
   // start spinner
   const spinner = ui.invokeSpinner().spin($('html')[0])
   const formData = getFormFields(event.target)
+  console.log(formData)
   api.signUp(formData)
     .then(() => {
       return api.signIn(formData)
@@ -409,6 +435,7 @@ function getAllWorkouts () {
 }
 
 Object.assign(module.exports, {
+  onExpeditedSignUp,
   onSignUp,
   onSignIn,
   onSignOut,
