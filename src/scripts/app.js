@@ -1,4 +1,7 @@
 'use strict'
+import '../styles/index.scss';
+import { Modal } from 'bootstrap';
+
 const ui = require('./ui')
 const events = require('./events')
 
@@ -31,10 +34,11 @@ $(() => {
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
   $('#search-exercise-checkbox').on('click', ui.toggleExerciseSearchBar)
-  $('#expedited-sign-up-modal').modal({
-    backdrop: 'static',
+  const myModal = new Modal('#expedited-sign-up-modal', {
     keyboard: false,
-    show: true
-  })
+    backdrop: 'static'
+  });
+  myModal.show();
   $('#confirm-expedited-sign-up-button').on('click', events.onExpeditedSignUp)
+  $('#cancel-expedited-sign-up-button').on('click', () => myModal.hide())
 })

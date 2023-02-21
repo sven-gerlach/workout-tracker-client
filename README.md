@@ -60,7 +60,7 @@ The [front-end app](https://sven-gerlach.github.io/workout-tracker-client/) is h
 The [back-end API](https://glacial-lowlands-84293.herokuapp.com/) is hosted on Heroku whilst the [back-end repository](https://github.com/sven-gerlach/workout-tracker) can be found on GitHub.
 
 ## Wireframes
-![ERD](public/wireframes.png)
+![ERD](admin/wireframes.png)
 
 ## User Stories
 + As an athlete I want to sign-up fast and be able to use the app immediately on my existing training plans.
