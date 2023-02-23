@@ -6,21 +6,23 @@ module.exports = {
   entry: {
     index: './src/scripts/app.js',
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/index.html"
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-    }),
-  ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+      Bootstrap: 'bootstrap',
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/index.html"
+    }),
+  ],
   module: {
     rules: [
       {

@@ -1,15 +1,15 @@
 'use strict'
-import '../styles/index.scss';
-import { Modal } from 'bootstrap';
 import ui from './ui';
 import events from './events';
+import '../styles/index.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
 
 // hiding all frames
 ui.showWelcomeFrame()
 
-$(() => {
+$.when($.ready).then(() => {
   const expeditedSignUpModal = $('#expedited-sign-up-modal');
-
   $('.go-to-welcome-frame').on('click', ui.showWelcomeFrame)
   $('#sign-in-button').on('click', ui.showSignInFrame)
   $('#sign-up-button').on('click', ui.showSignUpFrame)

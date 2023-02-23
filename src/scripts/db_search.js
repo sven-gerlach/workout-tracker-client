@@ -1,6 +1,6 @@
 'use strict'
-const store = require('./store')
-const _ = require('lodash')
+import { store } from './store'
+import { round } from "lodash";
 
 // returns an array with all exercise names
 function getUsedExerciseNames () {
@@ -35,7 +35,7 @@ function getWorkoutVolume (exercises) {
   for (const exercise of exercises) {
     let volume = 0
     for (const set of exercise.sets) {
-      volume += _.round(set.weight * set.repetitions)
+      volume += round(set.weight * set.repetitions)
     }
     workoutVolumes.push(volume)
   }
@@ -50,7 +50,7 @@ function getWorkoutDates (exercises) {
   return workoutDates
 }
 
-module.exports = {
+export default {
   getUsedExerciseNames,
   getAllExercisesOfType,
   getWorkoutVolume,

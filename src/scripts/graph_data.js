@@ -1,6 +1,6 @@
 'use strict'
 
-const Chart = require('chart.js')
+import Chart from 'chart.js'
 
 // this plugin checks if the first dataset has a length of less than [x],
 // and if true sets the output to a text message
@@ -82,6 +82,6 @@ function exerciseVolume (volume, dates) {
   })
 }
 
-module.exports = {
+export default {
   exerciseVolume
 }

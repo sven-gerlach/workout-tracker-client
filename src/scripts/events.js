@@ -1,10 +1,10 @@
 'use strict'
-const getFormFields = require('../lib/get-form-fields')
-const api = require('./api')
-const store = require('./store')
-const ui = require('./ui')
-const dbSearch = require('./db_search')
-const graphData = require('./graph_data')
+import getFormFields from '../lib/get-form-fields';
+import api from './api';
+import { store } from './store';
+import ui from './ui';
+import dbSearch from './db_search';
+import graphData from './graph_data';
 
 function onExpeditedSignUp (event) {
   event.preventDefault()
@@ -431,7 +431,7 @@ function getAllWorkouts () {
     .catch(console.error)
 }
 
-Object.assign(module.exports, {
+export default {
   onExpeditedSignUp,
   onSignUp,
   onSignIn,
@@ -450,4 +450,4 @@ Object.assign(module.exports, {
   onShowGraph,
   onDeleteWorkout,
   getAllWorkouts
-})
+}

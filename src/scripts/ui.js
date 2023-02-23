@@ -1,11 +1,11 @@
 'use strict'
 
-const store = require('./store')
-const moment = require('moment')
-const api = require('./api')
-const dbSearch = require('./db_search')
-const events = require('./events')
-const { Spinner } = require('spin.js')
+import { store } from './store';
+import moment from 'moment';
+import api from './api';
+import dbSearch from './db_search';
+import events from './events';
+import { Spinner } from 'spin.js';
 
 function hideAllFrames () {
   $('#welcome-frame').hide()
@@ -296,7 +296,7 @@ function invokeSpinner () {
   return new Spinner(spinnerOptions)
 }
 
-Object.assign(module.exports, {
+export default {
   showWelcomeFrame,
   showSignUpFrame,
   showSignInFrame,
@@ -323,4 +323,4 @@ Object.assign(module.exports, {
   toggleNavBarListItems,
   toggleExerciseSearchBar,
   invokeSpinner
-})
+}

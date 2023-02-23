@@ -1,6 +1,6 @@
 'use strict'
 import { apiUrl } from "./config";
-import store from './store'
+import { store } from './store'
 
 function signUp (data) {
   return $.ajax({
@@ -117,7 +117,7 @@ function deleteWorkout (workoutId) {
   })
 }
 
-module.exports = {
+export default {
   signUp,
   signIn,
   getAllWorkouts,
@@ -128,5 +128,5 @@ module.exports = {
   selectExercise,
   createSet,
   updatePersonalSettings,
-  deleteWorkout
+  deleteWorkout,
 }
