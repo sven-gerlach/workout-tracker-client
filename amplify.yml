@@ -8,7 +8,7 @@ frontend:
     build:
       commands:
         - nvm use
-        - npm run build:prod
+        - npm run build
   artifacts:
     baseDirectory: dist
     files:

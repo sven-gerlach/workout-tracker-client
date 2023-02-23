@@ -1,11 +1,11 @@
 'use strict'
-const config = require('./config')
-const store = require('./store')
+import { apiUrl } from "./config";
+import store from './store'
 
 function signUp (data) {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/sign-up',
+    url: apiUrl + '/sign-up',
     data: data
   })
 }
@@ -13,7 +13,7 @@ function signUp (data) {
 function signIn (data) {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/sign-in',
+    url: apiUrl + '/sign-in',
     data: data
   })
 }
@@ -21,7 +21,7 @@ function signIn (data) {
 function getAllWorkouts () {
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + '/workouts',
+    url: apiUrl + '/workouts',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -31,7 +31,7 @@ function getAllWorkouts () {
 function signOut () {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/sign-out',
+    url: apiUrl + '/sign-out',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -41,7 +41,7 @@ function signOut () {
 function changePassword (data) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/change-password',
+    url: apiUrl + '/change-password',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -52,7 +52,7 @@ function changePassword (data) {
 function deleteUserAccount () {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/users/' + store.user._id,
+    url: apiUrl + '/users/' + store.user._id,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
@@ -62,7 +62,7 @@ function deleteUserAccount () {
 function setUpWorkout (weightUnit) {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/workouts',
+    url: apiUrl + '/workouts',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -77,7 +77,7 @@ function setUpWorkout (weightUnit) {
 function selectExercise (workoutId, data) {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/workouts/' + workoutId,
+    url: apiUrl + '/workouts/' + workoutId,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -88,7 +88,7 @@ function selectExercise (workoutId, data) {
 function createSet (workoutId, exerciseId, data) {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/workouts/' + workoutId + '/exercise/' + exerciseId,
+    url: apiUrl + '/workouts/' + workoutId + '/exercise/' + exerciseId,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -99,7 +99,7 @@ function createSet (workoutId, exerciseId, data) {
 function updatePersonalSettings (data) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/users',
+    url: apiUrl + '/users',
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
@@ -110,7 +110,7 @@ function updatePersonalSettings (data) {
 function deleteWorkout (workoutId) {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/workouts/' + workoutId,
+    url: apiUrl + '/workouts/' + workoutId,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     }
