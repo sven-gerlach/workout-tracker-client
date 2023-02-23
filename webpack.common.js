@@ -1,10 +1,21 @@
 const path = require('path');
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  devtool: 'inline-source-map',
-  entry: ['./src/scripts/app.js'],
+  entry: {
+    index: './src/scripts/app.js',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html"
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+    }),
+  ],
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -13,10 +24,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(scss)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(css|scss)$/,
         use: [
           {
-            loader: 'style-loader' // Adds CSS to the DOM by injecting a `<style>` tag
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader'
@@ -36,24 +55,6 @@ module.exports = {
           }
         ]
       },
-    ]
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      title: 'ProLoad',
-    })
-  ],
-  devServer: {
-    static: path.resolve(__dirname, 'dist'),
-    port: 8080,
-    hot: true
-  },
-  optimization: {
-    runtimeChunk: 'single',
+    ],
   },
 };

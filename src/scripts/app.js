@@ -1,14 +1,15 @@
 'use strict'
 import '../styles/index.scss';
 import { Modal } from 'bootstrap';
-
-const ui = require('./ui')
-const events = require('./events')
+import ui from './ui';
+import events from './events';
 
 // hiding all frames
 ui.showWelcomeFrame()
 
 $(() => {
+  const expeditedSignUpModal = $('#expedited-sign-up-modal');
+
   $('.go-to-welcome-frame').on('click', ui.showWelcomeFrame)
   $('#sign-in-button').on('click', ui.showSignInFrame)
   $('#sign-up-button').on('click', ui.showSignUpFrame)
@@ -34,11 +35,7 @@ $(() => {
   $('#number-of-workouts').on('change', ui.populateWorkoutTable)
   $('#workout-history-table').on('click', events.onDeleteWorkout)
   $('#search-exercise-checkbox').on('click', ui.toggleExerciseSearchBar)
-  const myModal = new Modal('#expedited-sign-up-modal', {
-    keyboard: false,
-    backdrop: 'static'
-  });
-  myModal.show();
+  expeditedSignUpModal.modal('show');
   $('#confirm-expedited-sign-up-button').on('click', events.onExpeditedSignUp)
-  $('#cancel-expedited-sign-up-button').on('click', () => myModal.hide())
+  $('#cancel-expedited-sign-up-button').on('click', () => expeditedSignUpModal.modal('hide'))
 })
