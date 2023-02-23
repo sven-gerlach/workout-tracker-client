@@ -38,6 +38,7 @@ body {
 }
 
 #welcome-frame {
+  color: aliceblue;
   text-align: center;
   height: 100vh;
   div:first-of-type {
@@ -113,6 +114,7 @@ body {
 
 // Navbar
 #nav-bar-frame {
+  position: relative;
   .navbar-brand:hover {
     cursor: default;
   }
@@ -156,6 +158,7 @@ body {
 
 // Workout history table
 #workout-history-frame {
+  color: aliceblue;
   margin: 0 auto;
   div {
     margin: 15px 0 0 0;
@@ -184,6 +187,7 @@ body {
 #personal-settings-form,
 #change-pw-form,
 #delete-account-form {
+  color: aliceblue;
   margin: 15px auto 10px auto;
   display: flex;
   flex-direction: column;
@@ -233,6 +237,7 @@ body {
 }
 
 #global-settings-frame {
+  color: aliceblue;
   label {
     margin: 15px;
   }
@@ -243,6 +248,7 @@ body {
 
 // Select exercise frame
 #exercise-selection-frame form {
+  color: white;
   margin: 25px auto 10px auto;
   display: flex;
   flex-direction: column;
@@ -354,6 +360,7 @@ body {
 
 // Set frame
 #set-frame form {
+  color: aliceblue;
   margin: 30px auto 0 auto;
   display: flex;
   flex-direction: column;

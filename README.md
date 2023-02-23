@@ -7,26 +7,20 @@
 - Custom-built back-end with 13 RESTful API routes
 - NoSQL Database setup includes sub-documents and 1-to-many resource relationships
 
-### Technologies Used on the Front- and Back-End
-Technology | Front-End | Back-End
---- | :---: | :---:
-bcrypt | |x 
-Bootstrap | x
-Chart.js | x
-Cors | | x
-Express | | x
-HTML5 | x
-JavaScript | x | x
-jQuery | x
-Lodash | x | x
-Moment | x
-MongoDB | | x
-Mongoose | | x
-NodeJS | | x
-Passport | | x
-SCSS | x
-Spin | x
+## Overview of Packages
+- Bootstrap
+- Chart.js 
+- HTML5 
+- JavaScript 
+- jQuery 
+- Lodash 
+- Moment 
+- SCSS 
+- Spin 
+- Webpack 
 
+## Deployment
+The app is deployed on AWS Amplify under the URL https://main.d1lh4tq2cl1ki4.amplifyapp.com/.
 
 ## Background
 I want to build a workout app that reduces the interaction with the interface during the workout session to an absolute minimum. Eventually, the interaction will be limited to the mobile device/fitness band/watch asking the wearer to confirm the weight used. All the other key data points, such as repetitions, exercise, duration, heart rate are collected and stored automatically. The key USP will be the AI-driven recognition of the exercise type and the repetitions. I believe this can be achieved with 4 spatially aware sensors, each attached to the extremities of the wearer.
@@ -52,12 +46,8 @@ The frameworks and libraries used, include:
 + Spin
 + Moment
 
-## Links to Repos and Hosted Applications
-### Front-end
-The [front-end app](https://sven-gerlach.github.io/workout-tracker-client/) is hosted on GitHub Pages whilst the [front-end repository](https://github.com/sven-gerlach/workout-tracker-client) lives on GitHub.
-
-### Back-end
-The [back-end API](https://glacial-lowlands-84293.herokuapp.com/) is hosted on Heroku whilst the [back-end repository](https://github.com/sven-gerlach/workout-tracker) can be found on GitHub.
+## Links to Related Repositories
+The back-end API repo can be found on [GitHub](https://github.com/sven-gerlach/workout-tracker-api).
 
 ## Wireframes
 ![ERD](admin/wireframes.png)
@@ -73,26 +63,26 @@ The [back-end API](https://glacial-lowlands-84293.herokuapp.com/) is hosted on H
 ## Planning Documentation
 
 ### Planning
-1.  [x] Review of the requirements / brief
-1.  [x] Create User Stories
-1.  [x] Create Wire Frames
-1.  [x] Create ERD
+-[x] Review of the requirements / brief
+-[x] Create User Stories
+-[x] Create Wire Frames
+-[x] Create ERD
 
 ### Client
-1.  [x] Sign Up (curl then web app)
-1.  [x] Sign In (curl then web app)
-1.  [x] Change Password (curl then web app)
-1.  [x] Sign Out (curl then web page)
-1.  [x] All API calls have success or failure messages
-1.  [x] Create resource (curl then web app)
-1.  [x] Get all of their owned resources (curl then web app)
-1.  [x] Delete single resource (curl then web app)
-1.  [x] Update single resource (curl then web app)
+-[x] Sign Up (curl then web app)
+-[x] Sign In (curl then web app)
+-[x] Change Password (curl then web app)
+-[x] Sign Out (curl then web page)
+-[x] All API calls have success or failure messages
+-[x] Create resource (curl then web app)
+-[x] Get all of their owned resources (curl then web app)
+-[x] Delete single resource (curl then web app)
+-[x] Update single resource (curl then web app)
 
 ### Final Touches
-1.  [x] README
-1.  [x] Troubleshoot/Debug
-1.  [x] Refactor
+-[x] README
+-[x] Troubleshoot/Debug
+-[x] Refactor
 
 ## Stretch Goals / Next Development Phase
 1. Build in timer functionality that allows the user to record time, including total time under load, total breaks between reps and, separately, time between sets, as well as average break lengths

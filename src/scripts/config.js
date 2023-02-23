@@ -2,8 +2,8 @@
 
 export let apiUrl
 export const apiUrls = {
-  production: 'https://glacial-lowlands-84293.herokuapp.com',
-  development: 'http://localhost:4741'
+  production: 'https://workout-tracker-api-cl81.onrender.com',
+  development: 'http://localhost:3001'
 }
 
 if (window.location.hostname === 'localhost') {
