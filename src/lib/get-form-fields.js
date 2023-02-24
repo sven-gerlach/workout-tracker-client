@@ -3,7 +3,6 @@
 import { addNestedValue } from './add-nested-value';
 
 export const getFormFields = (form) => {
-  console.log(form)
   const target = {}
 
   const elements = form.elements || []
@@ -35,7 +34,6 @@ export const getFormFields = (form) => {
       addNestedValue(target, name, e.value)
     }
   }
-  console.log(target)
 
   return target
 }
