@@ -1,8 +1,9 @@
 'use strict'
 
-const addNestedValue = require('./add-nested-value')
+import { addNestedValue } from './add-nested-value';
 
-const getFormFields = (form) => {
+export const getFormFields = (form) => {
+  console.log(form)
   const target = {}
 
   const elements = form.elements || []
@@ -18,7 +19,7 @@ const getFormFields = (form) => {
         type = e.hasAttribute('multiple') ? 'MULTIPLE' : type
         break
       case 'INPUT':
-        type = e.getAttribute('type').toUpperCase()
+        type = e.getAttribute('type')?.toUpperCase()
         break
     }
 
@@ -34,8 +35,7 @@ const getFormFields = (form) => {
       addNestedValue(target, name, e.value)
     }
   }
+  console.log(target)
 
   return target
 }
-
-module.exports = getFormFields

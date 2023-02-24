@@ -1,6 +1,6 @@
 'use strict'
 
-const addNestedValue = function (pojo, name, value) {
+export const addNestedValue = function (pojo, name, value) {
   const recurse = function recurse (pojo, keys, value) {
     const key = keys.shift()
     const next = keys[0]
@@ -20,5 +20,3 @@ const addNestedValue = function (pojo, name, value) {
   const keys = name.split('[').map((k) => k.replace(/]$/, ''))
   return recurse(pojo, keys, value)
 }
-
-module.exports = addNestedValue

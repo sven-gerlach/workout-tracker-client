@@ -1,5 +1,5 @@
 'use strict'
-import getFormFields from '../lib/get-form-fields';
+import { getFormFields } from '../lib/get-form-fields';
 import api from './api';
 import { store } from './store';
 import ui from './ui';
