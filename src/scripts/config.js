@@ -2,7 +2,7 @@
 
 export let apiUrl
 export const apiUrls = {
-  production: 'https://ck7k22n5j9.execute-api.us-east-1.amazonaws.com/prod',
+  production: 'https://proload.onrender.com',
   development: 'http://localhost:3001/dev'
 }
 

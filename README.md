@@ -20,7 +20,7 @@
 - Webpack 
 
 ## Deployment
-The app is deployed on AWS Amplify under the URL https://main.d1lh4tq2cl1ki4.amplifyapp.com/.
+The client app is deployed on [Render](https://www.proload.sigmagamma.app) and the api is also deployed on [Render](https://proload.onrender.com).
 
 ## Background
 I want to build a workout app that reduces the interaction with the interface during the workout session to an absolute minimum. Eventually, the interaction will be limited to the mobile device/fitness band/watch asking the wearer to confirm the weight used. All the other key data points, such as repetitions, exercise, duration, heart rate are collected and stored automatically. The key USP will be the AI-driven recognition of the exercise type and the repetitions. I believe this can be achieved with 4 spatially aware sensors, each attached to the extremities of the wearer.
